@@ -47,4 +47,9 @@ public class LineItem {
         this.quantity = 1;
         this.totalPrice = productPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + productName + ", quantity: " + quantity + "price per unit" + productPrice + ", total price: " + totalPrice;
+    }
 }
