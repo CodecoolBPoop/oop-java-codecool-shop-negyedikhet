@@ -17,7 +17,6 @@ function addToCart(){
                         } else {
                             alert("Status: " + status)
                         }
-
                 }
             );
         })

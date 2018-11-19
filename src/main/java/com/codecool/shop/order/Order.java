@@ -1,23 +1,23 @@
 package com.codecool.shop.order;
 
+import com.codecool.shop.model.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
 
-    private List<LineItem> cartContent = new ArrayList<>();
-    private int cartSize;
+    private static List<LineItem> cartContent = new ArrayList<>();
+    private static int cartSize = cartContent.size();
 
     public List<LineItem> getCartContent() {
         return cartContent;
     }
 
-    public void setCartContent(List<LineItem> cartContent) {
-        this.cartContent = cartContent;
-    }
-
-    public void numberOfCartItems(){
-        cartContent.size();
+    public static void addItemToCart(Product product){
+        cartContent.add(new LineItem(product));
+        System.out.println("Cart content:"+cartContent);
+        System.out.println("Cart size:"+cartSize);
     }
 
 }
