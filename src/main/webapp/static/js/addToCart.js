@@ -7,10 +7,22 @@ function addToCart(){
     for (let button of addButtons){
         button.addEventListener("click", function (event) {
             let productId = event.target.dataset.productid;
-            console.log(productId)
+            let url = "add-to-cart";
+            $.post(url,
+                {
+                    "productId" : productId
+                }, function(response, status) {
+                        if (status === "success"){
+                            alert("Successfully added to cart")
+                        } else {
+                            alert("Status: " + status)
+                        }
+
+                }
+            );
         })
     }
-    
+
 }
 
 init();
