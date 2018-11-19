@@ -4,10 +4,15 @@ import com.codecool.shop.model.Product;
 
 public class LineItem {
 
+    private Product product;
     private String productName;
     private double productPrice;
     private int quantity;
     private double totalPrice;
+
+    public Product getProduct() {
+        return product;
+    }
 
     public String getProductName() {
         return productName;
@@ -29,19 +34,20 @@ public class LineItem {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void increaseQuantity() {
+        this.quantity++;
     }
 
-        public void setTotalPrice(int quantity){
-            this.totalPrice = quantity * productPrice;
-        }
+    public void calculateTotalPrice() {
+        this.totalPrice = quantity * productPrice;
+    }
 
-        public double getTotalPrice(){
-            return totalPrice;
-        }
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 
-    public LineItem(Product product){
+    public LineItem(Product product) {
+        this.product = product;
         this.productName = product.getName();
         this.productPrice = product.getDefaultPrice();
         this.quantity = 1;
@@ -50,6 +56,6 @@ public class LineItem {
 
     @Override
     public String toString() {
-        return "Name: " + productName + ", quantity: " + quantity + "price per unit" + productPrice + ", total price: " + totalPrice;
+        return "Name: " + productName + ", quantity: " + quantity + ", price per unit: " + productPrice + ", total price: " + totalPrice;
     }
 }
