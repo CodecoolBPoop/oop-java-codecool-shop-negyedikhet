@@ -23,6 +23,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/static/js/sorting.js" defer></script>
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
 </head>
@@ -31,6 +32,12 @@
 
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
+</div>
+
+<div>
+    <select id="selectioncategory">
+        <option selected data-th-each="category: ${categories}" value="default" th:value="${category.name}" th:text="${category.name}">default</option>
+    </select>
 </div>
 
 <div class="container">
