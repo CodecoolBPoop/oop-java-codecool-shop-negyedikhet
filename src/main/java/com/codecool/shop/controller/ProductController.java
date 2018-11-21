@@ -18,11 +18,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -41,6 +40,11 @@ public class ProductController extends HttpServlet {
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+        HttpSession mySession = req.getSession();
+        if (mySession.getAttribute("order") == null) {
+            Order myOrder = new Order();
+            mySession.setAttribute("order", myOrder);
+        }
 //        context.setVariables(params);
         int categoryID;
         if (req.getParameter("categoryID") != null) {
@@ -72,7 +76,8 @@ public class ProductController extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         resp.setContentType("application/json;charset=UTF-8");
-        System.out.println(Order.getCartContent());
-        out.print(new Gson().toJson(Order.getCartContent()));
+        HttpSession mySession = req.getSession();
+        Order myOrder = (Order) mySession.getAttribute("order");
+        out.print(new Gson().toJson(myOrder.getCartContent()));
     }
 }
