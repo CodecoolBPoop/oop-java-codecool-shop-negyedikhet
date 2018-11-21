@@ -46,4 +46,9 @@ public class Customer {
         this.billingAddress = billingAddress;
         this.shippingAddress = shippingAddress;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + ", email: " + email + ", phone: " + phone + ", billing address: " + billingAddress + ", shipping address: " + shippingAddress;
+    }
 }
