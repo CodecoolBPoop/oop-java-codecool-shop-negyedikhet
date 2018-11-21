@@ -23,6 +23,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/static/js/sorting.js" defer></script>
 
     <script src="static/js/addToCart.js" defer></script>
     <script src="static/js/cartReview.js" defer></script>
@@ -36,6 +37,15 @@
     <div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="checkoutButton">asd</button>
     </div>
+</div>
+
+<div>
+    <select id="selectioncategory">
+        <option th:each="category: ${categories}" value="default" th:attr="data-categoryid=${category.getId()}" th:value="${category.name}" th:text="${category.name}">category</option>
+    </select>
+    <select id="selectionsupplier">
+        <option th:each="supplier: ${suppliers}" value="default" th:attr="data-supplierid=${supplier.getId()}" th:value="${supplier.name}" th:text="${supplier.name}">supplier</option>
+    </select>
 </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="exampleModal">

@@ -9,15 +9,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/add-to-cart"})
 public class AddToCartController extends HttpServlet {
+    private Order order = new Order();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession mySession = req.getSession();
         int productId = Integer.parseInt(req.getParameter("productId"));
         Product product = ProductDaoMem.getInstance().find(productId);
-        Order.addItemToCart(product);
+        mySession.setAttribute("order", order);
+        order.addItemToCart(product);
     }
 }
