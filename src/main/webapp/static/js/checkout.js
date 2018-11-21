@@ -28,6 +28,7 @@ function checkout(checkbox) {
             let billingAddress = bcountry+" "+bzip+" "+bcity+" "+baddress;
             let shippingAddress;
             let url = "checkout";
+            let queryvalue = this.getAttribute('id');
 
             if (checkbox.checked === true){
                 shippingAddress = billingAddress;
@@ -45,7 +46,7 @@ function checkout(checkbox) {
                 }, function(response, status) {
                     if (status === "success"){
                         console.log("Successfully checked out ");
-                        location.href = "pay"
+                        location.href = "pay?paymentMethod=" + queryvalue
                     } else {
                         alert("Status: " + status + "\nSomething went wrong, please try again!")
                     }
