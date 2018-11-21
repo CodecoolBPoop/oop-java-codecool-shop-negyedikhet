@@ -6,7 +6,7 @@ let tbody = document.getElementById("body");
 
 let headers = ["productName","productPrice","quantity","totalPrice"];
 
-
+let checkoutButton = document.getElementById("checkoutButton");
 
 btn.onclick = function () {
     let url = "/";
@@ -36,12 +36,16 @@ btn.onclick = function () {
                 tbody.appendChild(new_list_element);
             }
         }
-    )
+    );
+};
+
+checkoutButton.onclick = function(){
+    location.href = "checkout";
 };
 
 
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
         modal.style.display = "none";
     }
-}
+};
