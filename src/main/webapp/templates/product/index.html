@@ -37,7 +37,10 @@
 
 <div>
     <select id="selectioncategory">
-        <option selected data-th-each="category: ${categories}" value="default" th:value="${category.name}" th:text="${category.name}">default</option>
+        <option th:each="category: ${categories}" value="default" th:attr="data-categoryid=${category.getId()}" th:value="${category.name}" th:text="${category.name}">category</option>
+    </select>
+    <select id="selectionsupplier">
+        <option th:each="supplier: ${suppliers}" value="default" th:attr="data-supplierid=${supplier.getId()}" th:value="${supplier.name}" th:text="${supplier.name}">supplier</option>
     </select>
 </div>
 
