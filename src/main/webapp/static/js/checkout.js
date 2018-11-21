@@ -41,6 +41,13 @@ function checkout(checkbox) {
                 "phone": phone,
                 "billingAddress":billingAddress,
                 "shippingAddress":shippingAddress,
+            }, function(response, status) {
+                if (status === "success"){
+                    console.log("Successfully checked out ");
+                    location.href = "pay"
+                } else {
+                    alert("Status: " + status + "\nSomething went wrong, please try again!")
+                }
             }
         );
     })
