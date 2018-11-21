@@ -6,11 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    public static final String NEW = "new";
+    public static final String CHECKED = "checked";
+    public static final String PAYED = "payed";
+    private int orderId;
+    private static int idCounter = 0;
+    private String status;
 
-    private static List<LineItem> cartContent = new ArrayList<>();
-    private static int cartSize = 0;
+    private List<LineItem> cartContent = new ArrayList<>();
+    private int cartSize = 0;
 
-    public static int getCartSize() {
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public int getCartSize() {
         return cartSize;
     }
 
@@ -18,7 +29,7 @@ public class Order {
         return cartContent;
     }
 
-    public static void addItemToCart(Product product) {
+    public void addItemToCart(Product product) {
 
         for (LineItem item : cartContent) {
             if (item.getProduct().equals(product)) {
@@ -37,7 +48,12 @@ public class Order {
         System.out.println("Cart size:" + cartSize);
     }
 
-    public static void calculateCartSize() {
+    public void calculateCartSize() {
         cartSize = cartContent.stream().mapToInt(LineItem::getQuantity).sum();
+    }
+
+    public Order(){
+        this.orderId = idCounter++;
+        this.status = NEW;
     }
 }
