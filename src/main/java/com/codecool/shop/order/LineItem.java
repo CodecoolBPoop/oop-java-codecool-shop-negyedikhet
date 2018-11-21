@@ -4,7 +4,7 @@ import com.codecool.shop.model.Product;
 
 public class LineItem {
 
-    private Product product;
+    private transient Product product;
     private String productName;
     private double productPrice;
     private int quantity;
@@ -18,11 +18,11 @@ public class LineItem {
         return productName;
     }
 
-    public void setProductName(String productName) {
+    public void  setProductName(String productName) {
         this.productName = productName;
     }
 
-    public double getProductPrice() {
+    public double  getProductPrice() {
         return productPrice;
     }
 
@@ -30,7 +30,7 @@ public class LineItem {
         this.productPrice = productPrice;
     }
 
-    public int getQuantity() {
+    public int  getQuantity() {
         return quantity;
     }
 

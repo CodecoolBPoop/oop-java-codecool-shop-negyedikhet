@@ -14,7 +14,7 @@ public class Order {
         return cartSize;
     }
 
-    public List<LineItem> getCartContent() {
+    public static List<LineItem> getCartContent() {
         return cartContent;
     }
 
