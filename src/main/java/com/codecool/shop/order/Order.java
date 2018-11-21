@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    public static final String NEW = "new";
-    public static final String CHECKED = "checked";
-    public static final String PAYED = "payed";
+    public final String NEW = "new";
+    public final String CHECKED = "checked";
+    public final String PAYED = "payed";
     private int orderId;
     private static int idCounter = 0;
     private String status;
+    private static Order instance = null;
 
     private List<LineItem> cartContent = new ArrayList<>();
     private int cartSize = 0;
@@ -25,7 +26,7 @@ public class Order {
         return cartSize;
     }
 
-    public static List<LineItem> getCartContent() {
+    public  List<LineItem> getCartContent() {
         return cartContent;
     }
 
@@ -56,4 +57,5 @@ public class Order {
         this.orderId = idCounter++;
         this.status = NEW;
     }
+
 }
