@@ -1,8 +1,6 @@
 let modal = document.getElementById("checkoutModal");
 
-let btn = document.getElementById("checkoutButton");
-
-let span = document.getElementsByClassName("close")[0];
+let btn = document.getElementById("Cart");
 
 let tbody = document.getElementById("body");
 
