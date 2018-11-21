@@ -60,3 +60,8 @@
 {
     margin: 0 0 11px;
 }
+
+.form-group{
+    padding-right: 15px;
+    padding-left: 15px
+}
