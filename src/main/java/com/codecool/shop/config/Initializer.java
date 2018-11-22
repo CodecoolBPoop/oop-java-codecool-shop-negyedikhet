@@ -37,8 +37,6 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(milka);
         Supplier rudolf = new Supplier("Rudolf", "Artificial christmas trees");
         supplierDataStore.add(rudolf);
-        Supplier ginger = new Supplier("GingerFactory", "Christmas cookies");
-        supplierDataStore.add(ginger);
 
 
         //setting up a new product category
@@ -57,13 +55,13 @@ public class Initializer implements ServletContextListener {
 
 
         //setting up products and printing it
-        productDataStore.add(new Product("Sweater with bow", 25, "USD", "Beautiful gift for your loved ones.", clothes, lipoti));
-        productDataStore.add(new Product("Star Wars sweater", 32, "USD", "The perfect present for Star Wars fans. ", clothes, lipoti));
-        productDataStore.add(new Product("Kitten sweater", 39, "USD", "How else could you surprise your beloved girlfriend?", clothes, lipoti));
-        productDataStore.add(new Product("Gingerbread - Tree", 9, "USD", "Finest freshly baked gingerbread.", cookie, ginger));
-        productDataStore.add(new Product("Gingerbread - Classic", 2, "USD", "Classic gingerbread figure.", cookie, ginger));
-        productDataStore.add(new Product("Gingerbread - House", 19, "USD", "Handmade gingerbread house.", cookie, ginger));
-        productDataStore.add(new Product("Christmas Bejgli", 9, "USD", "Walnut flavoured hungarian cookie speciality.", cookie, ginger));
+        productDataStore.add(new Product("Sweater with bow", 25, "USD", "Beautiful gift for your loved ones.", clothes, gucci));
+        productDataStore.add(new Product("Star Wars sweater", 32, "USD", "The perfect present for Star Wars fans. ", clothes, gucci));
+        productDataStore.add(new Product("Kitten sweater", 39, "USD", "How else could you surprise your beloved girlfriend?", clothes, gucci));
+        productDataStore.add(new Product("Gingerbread - Tree", 9, "USD", "Finest freshly baked gingerbread.", cookie, lipoti));
+        productDataStore.add(new Product("Gingerbread - Classic", 2, "USD", "Classic gingerbread figure.", cookie, lipoti));
+        productDataStore.add(new Product("Gingerbread - House", 19, "USD", "Handmade gingerbread house.", cookie, lipoti));
+        productDataStore.add(new Product("Christmas Bejgli", 9, "USD", "Walnut flavoured hungarian cookie speciality.", cookie, lipoti));
         productDataStore.add(new Product("Xmas Ball - Red", 1, "USD", "Shiny red christmas decoration ball", decor, surefire));
         productDataStore.add(new Product("Xmas Ball - Blue", 1, "USD", "Shiny blue christmas decoration ball", decor, surefire));
         productDataStore.add(new Product("Xmas Ball - Purple", 1, "USD", "Shiny purple christmas decoration ball", decor, surefire));
