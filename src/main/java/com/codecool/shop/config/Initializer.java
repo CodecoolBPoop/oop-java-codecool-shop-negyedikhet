@@ -57,7 +57,7 @@ public class Initializer implements ServletContextListener {
         //setting up products and printing it
         productDataStore.add(new Product("Sweater with bow", 25, "USD", "Beautiful gift for your loved ones.", clothes, gucci));
         productDataStore.add(new Product("Star Wars sweater", 32, "USD", "The perfect present for Star Wars fans. ", clothes, gucci));
-        productDataStore.add(new Product("Kitten sweater", 39, "USD", "How else could you surprise your beloved girlfriend?", clothes, gucci));
+        productDataStore.add(new Product("Kitten sweater", 39, "USD", "Surprise your beloved girlfriend with kittens!", clothes, gucci));
         productDataStore.add(new Product("Gingerbread - Tree", 9, "USD", "Finest freshly baked gingerbread.", cookie, lipoti));
         productDataStore.add(new Product("Gingerbread - Classic", 2, "USD", "Classic gingerbread figure.", cookie, lipoti));
         productDataStore.add(new Product("Gingerbread - House", 19, "USD", "Handmade gingerbread house.", cookie, lipoti));
@@ -68,7 +68,7 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Wreath - Simple", 19, "USD", "Simple, but beautiful Christmas wreath", decor, surefire));
         productDataStore.add(new Product("Wreath - Classic", 25, "USD", "Classic, decorated Christmas wreath", decor, surefire));
         productDataStore.add(new Product("Wreath - Silver", 39, "USD", "Special silver colored Christmas wreath ", decor, surefire));
-        productDataStore.add(new Product("Xmas candy - Marzipan ", 9, "USD", "Marzipan flavoured hungarian choco-candy speciality.", chocolatecandy, milka));
+        productDataStore.add(new Product("Xmas candy - Marzipan ", 9, "USD", "Marzipan flavoured hungarian choco-candy.", chocolatecandy, milka));
         productDataStore.add(new Product("Xmas candy - Selection", 15, "USD", "Selection of hungarian choco-candy specialities.", chocolatecandy, milka));
         productDataStore.add(new Product("Xmas candy - Nut", 9, "USD", "Nut flavoured hungarian choco-candy speciality.", chocolatecandy, milka));
         productDataStore.add(new Product("Xmas Tree - Silver", 59, "USD", "Silver colored Christmas tree", tree, rudolf));
