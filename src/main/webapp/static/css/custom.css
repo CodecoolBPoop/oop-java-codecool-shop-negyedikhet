@@ -61,3 +61,118 @@
     margin: 0 0 11px;
 }
 
+.form-group{
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 80px;
+    margin-top: 2vh;
+    margin-bottom: 4vh;
+    display: inline;
+}
+
+h3 {
+    font-size: 30px;
+    margin-bottom: 2vh;
+    font-weight: 800;
+}
+
+h4 {
+    font-size: 25px;
+    margin-bottom: 3vh;
+    font-weight: 700;
+}
+h1, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+}
+
+.dataParagraph, .formLabels {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+}
+
+.formLabels{
+    font-size: 20px;
+}
+
+.dataParagraph {
+    font-size: 25px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.paycolumn {
+    text-align: center;
+    float:left;
+    width: 100%;
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.payrow::after {
+    content: "";
+    clear: both;
+    display: table;
+    margin-bottom: 60px;
+}
+
+.checkoutBody{
+    background: url("https://cdn.hipwallpaper.com/i/60/78/9OS0uT.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 150vh;
+    width: 100vw;
+}
+
+.container{
+    background-color: #fffaf0cf;
+    border-radius: 15px;
+    margin-bottom: 7vh;
+    margin-top: 7vh;
+    padding: 5vh;
+    position: relative;
+    width: 61vw;
+}
+
+.page-header{
+    border-bottom: 1px solid #d2cccc;
+    border-radius: 4px;
+}
+
+.checkoutImage{
+    width: 18vw;
+    height: auto;
+    display: inline;
+
+}
+
+.checkoutH1{
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    left: 45px;
+}
+
+.checkoutHeader{
+    width: 100%;
+}
+
+.checkoutButton{
+    background-color: rgba(0,0,0,0);
+    background-image: none;
+    border: none;
+}
+
+.checkoutButton:hover{
+    background-color: #FFD700;
+    border: 0.5px solid dimgrey;
+}
