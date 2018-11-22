@@ -4,6 +4,7 @@ import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.order.Customer;
+import com.codecool.shop.order.Order;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -34,6 +35,9 @@ public class CheckoutController extends HttpServlet {
         String billingAddress = req.getParameter("billingAddress");
         String shippingAddress = req.getParameter("shippingAddress");
         Customer customer = new Customer(name,email,phone,billingAddress,shippingAddress);
-        System.out.println(customer);
+        HttpSession mySession = req.getSession();
+        Order myOrder = (Order) mySession.getAttribute("order");
+        myOrder.setCustomer(customer);
+        System.out.println(myOrder.getCustomer());
     }
 }

@@ -13,11 +13,18 @@ public class Order {
     private int orderId;
     private static int idCounter = 0;
     private String status;
-    private static Order instance = null;
+    private Customer customer;
 
     private List<LineItem> cartContent = new ArrayList<>();
     private int cartSize = 0;
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public int getOrderId() {
         return orderId;
