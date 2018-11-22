@@ -64,8 +64,8 @@
         </div>
     </div>
 </div>
-<div class="container titleContainer" >
-        <h1 id="title">Jingling Elf-pants</h1>
+<div class="container titleContainer">
+    <h1 id="title">Jingling Elf-pants</h1>
 
 </div>
 
@@ -75,50 +75,57 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="Cart">Szatyi
         </button>
     </div>
-    <div>
-        <select id="selectioncategory">
-            <option th:each="category: ${categories}" value="default" th:attr="data-categoryid=${category.getId()}"
-                    th:value="${category.name}" th:text="${category.name}">category
-            </option>
-        </select>
-        <select id="selectionsupplier">
-            <option th:each="supplier: ${suppliers}" value="default" th:attr="data-supplierid=${supplier.getId()}"
-                    th:value="${supplier.name}" th:text="${supplier.name}">supplier
-            </option>
-        </select>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="selectioncategory">Select category: </label>
+            <select class="form-control" id="selectioncategory">
+                <option th:each="category: ${categories}" value="default" th:attr="data-categoryid=${category.getId()}"
+                        th:value="${category.name}" th:text="${category.name}">category
+                </option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="selectionsupplier">Select supplier: </label>
+            <select class="form-control" id="selectionsupplier">
+                <option th:each="supplier: ${suppliers}" value="default" th:attr="data-supplierid=${supplier.getId()}"
+                        th:value="${supplier.name}" th:text="${supplier.name}">supplier
+                </option>
+            </select>
+        </div>
     </div>
+
     <!--
         <div class="well well-sm">
             <strong th:text="${category.name}">Category Title</strong>
         </div>
     -->
-        <div id="products" class="row list-group">
+    <div id="products" class="row list-group">
 
-            <div class="item col-xs-4 col-lg-4" th:each="prod,iterStat : ${products}">
-                <div class="thumbnail">
-                    <img class="group list-group-image" src="http://placehold.it/400x250/000/fff"
-                         th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
-                    <div class="caption">
-                        <h4 class="group inner list-group-item-heading" th:text="${prod.name}">Product name</h4>
-                        <p class="group inner list-group-item-text" th:text="${prod.description}">Product
-                            description... </p>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <a class="btn btn-success addtocart" href="#" th:attr="data-productid=${prod.id}">Add to
-                                    cart</a>
-                            </div>
+        <div class="item col-xs-4 col-lg-4" th:each="prod,iterStat : ${products}">
+            <div class="thumbnail">
+                <img class="group list-group-image" src="http://placehold.it/400x250/000/fff"
+                     th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading" th:text="${prod.name}">Product name</h4>
+                    <p class="group inner list-group-item-text" th:text="${prod.description}">Product
+                        description... </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <a class="btn btn-success addtocart" href="#" th:attr="data-productid=${prod.id}">Add to
+                                cart</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
-    <div th:replace="footer.html :: copy"></div>
+</div>
 
-    </body>
-    </html>
+<div th:replace="footer.html :: copy"></div>
+
+</body>
+</html>
