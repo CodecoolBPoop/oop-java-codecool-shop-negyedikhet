@@ -13,12 +13,7 @@ function addToCart() {
             $.post(url,
                 {
                     "productId": productId
-                }, function (response, status) {
-                    if (status === "success") {
-                        console.log("added ti cart")
-                    } else {
-                        console.log("Status: " + status)
-                    }
+
                 }
             );
         })
