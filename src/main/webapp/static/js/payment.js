@@ -6,12 +6,22 @@ function init () {
         let divName, divPass;
         let labelName, labelPass;
         let inputName, inputPass;
+        let spanPaypal;
+        let divRow;
+        divRow = document.createElement("div");
+        divRow.classList.add("form-row");
+
+        spanPaypal = document.createElement("span");
+        spanPaypal.classList.add("dataParagraph");
+        spanPaypal.innerHTML = "Paypal Credentials";
+
         divName = document.createElement("div");
         divName.classList.add("form-group");
 
         labelName = document.createElement("label");
         labelName.setAttribute("for", "username");
-        labelName.text = "Username";
+        labelName.classList.add("formLabels");
+        labelName.innerHTML = "Username";
 
         inputName = document.createElement("input");
         inputName.setAttribute("type", "text");
@@ -27,7 +37,8 @@ function init () {
 
         labelPass = document.createElement("label");
         labelPass.setAttribute("for", "password");
-        labelPass.text = "Password";
+        labelPass.classList.add("formLabels");
+        labelPass.innerHTML = "Password";
 
         inputPass = document.createElement("input");
         inputPass.setAttribute("type", "text");
@@ -36,26 +47,38 @@ function init () {
         inputPass.setAttribute("placeholder", "Password");
         inputPass.setAttribute("required", "");
 
+        formNode.appendChild(spanPaypal);
         divName.appendChild(labelName);
         divName.appendChild(inputName);
-        formNode.appendChild(divName);
+        divRow.appendChild(divName);
 
+        divPass.appendChild(labelPass);
         divPass.appendChild(inputPass);
-        divPass.appendChild(inputPass);
-        formNode.appendChild(divPass);
+        divRow.appendChild(divPass);
+
+        formNode.appendChild(divRow);
 
 
     } else if (paymentMethod === "creditcard") {
         let divCardNumber, divCardHolder, divExpDate, divCode;
         let labelCardNumber, labelCardHolder, labelExpDate, labelCode;
         let inputCardNumber, inputCardHolder, inputExpdate, inputCode;
+        let spanCreditCard;
+        let divRow;
+        divRow = document.createElement("div");
+        divRow.classList.add("form-row");
+
+        spanCreditCard = document.createElement("span");
+        spanCreditCard.classList.add("dataParagraph");
+        spanCreditCard.innerHTML = "Credit Card Information";
 
        divCardNumber = document.createElement("div");
         divCardNumber.classList.add("form-group");
 
         labelCardNumber = document.createElement("label");
         labelCardNumber.setAttribute("for", "cardnumber");
-        labelCardNumber.text = "Card Number";
+        labelCardNumber.classList.add("formLabels");
+        labelCardNumber.innerHTML = "Card Number";
 
         inputCardNumber = document.createElement("input");
         inputCardNumber.setAttribute("type", "text");
@@ -70,7 +93,8 @@ function init () {
 
         labelCardHolder = document.createElement("label");
         labelCardHolder.setAttribute("for", "cardholder");
-        labelCardHolder.text = "Card Holder";
+        labelCardHolder.classList.add("formLabels");
+        labelCardHolder.innerHTML = "Card Holder";
 
         inputCardHolder = document.createElement("input");
         inputCardHolder.setAttribute("type", "text");
@@ -85,7 +109,8 @@ function init () {
 
         labelExpDate = document.createElement("label");
         labelExpDate.setAttribute("for", "cardnumber");
-        labelExpDate.text = "Expiration Date";
+        labelExpDate.classList.add("formLabels");
+        labelExpDate.innerHTML = "Expiration Date";
 
         inputExpdate = document.createElement("input");
         inputExpdate.setAttribute("type", "text");
@@ -100,7 +125,8 @@ function init () {
 
         labelCode = document.createElement("label");
         labelCode.setAttribute("for", "code");
-        labelCode.text = "Code";
+        labelCode.classList.add("formLabels");
+        labelCode.innerHTML = "Code";
 
         inputCode = document.createElement("input");
         inputCode.setAttribute("type", "text");
@@ -109,21 +135,24 @@ function init () {
         inputCode.setAttribute("placeholder", "Code");
         inputCode.setAttribute("required", "");
 
+        formNode.appendChild(spanCreditCard);
         divCardNumber.appendChild(labelCardNumber);
         divCardNumber.appendChild(inputCardNumber);
-        formNode.appendChild(divCardNumber);
+        divRow.appendChild(divCardNumber);
 
         divCardHolder.appendChild(labelCardHolder);
         divCardHolder.appendChild(inputCardHolder);
-        formNode.appendChild(divCardHolder);
+        divRow.appendChild(divCardHolder);
 
         divExpDate.appendChild(labelExpDate);
         divExpDate.appendChild(inputExpdate);
-        formNode.appendChild(divExpDate);
+        divRow.appendChild(divExpDate);
 
         divCode.appendChild(labelCode);
         divCode.appendChild(inputCode);
-        formNode.appendChild(divCode);
+        divRow.appendChild(divCode);
+
+        formNode.appendChild(divRow);
     }
     buttonBuild(formNode)
 }
