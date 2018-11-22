@@ -75,6 +75,7 @@ h1 {
     font-size: 80px;
     margin-top: 2vh;
     margin-bottom: 4vh;
+    display: inline;
 }
 
 h3 {
@@ -137,9 +138,40 @@ h1, h3, h4 {
     margin-bottom: 7vh;
     margin-top: 7vh;
     padding: 5vh;
+    position: relative;
+    width: 61vw;
 }
 
 .page-header{
     border-bottom: 1px solid #d2cccc;
     border-radius: 4px;
+}
+
+.checkoutImage{
+    width: 18vw;
+    height: auto;
+    display: inline;
+
+}
+
+.checkoutH1{
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    left: 45px;
+}
+
+.checkoutHeader{
+    width: 100%;
+}
+
+.checkoutButton{
+    background-color: rgba(0,0,0,0);
+    background-image: none;
+    border: 0.5px solid dimgrey;
+}
+
+.checkoutButton:hover{
+    background-color: #FFD700;
 }
