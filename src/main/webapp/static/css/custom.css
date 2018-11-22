@@ -89,7 +89,7 @@ h4 {
     margin-bottom: 3vh;
     font-weight: 700;
 }
-h1, h3, h4 {
+h1, h3, h4 .addtocart  {
     font-family: 'Cormorant Garamond', serif;
     text-align: center;
 }
@@ -177,10 +177,15 @@ h1, h3, h4 {
     border: 0.5px solid dimgrey;
 }
 
-.indexHeader {
-    border-bottom: 1px solid rgba(5, 5, 5, 0.26);
-    border-radius: 1px;
+img {
+    display: inline-block;
+}
+#title {
     text-align: center;
+    font-family: 'Pacifico', cursive;
+    color: white;
+    margin: auto;
+    display: block;
 }
 
 .indexBody{
@@ -192,4 +197,20 @@ h1, h3, h4 {
 .panel-body{
     text-align: center;
     background-color: #d42426;
+    color:white;
+    font-weight: bolder;
+}
+
+.indexContainer{
+    background-color: #f9f8f6ed;
+}
+
+.titleContainer{
+    background: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+p {
+    font-family: 'Cormorant Garamond', serif;
 }
