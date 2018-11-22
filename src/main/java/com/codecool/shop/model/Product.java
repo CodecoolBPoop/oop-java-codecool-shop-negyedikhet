@@ -1,5 +1,7 @@
 package com.codecool.shop.model;
 
+import com.codecool.shop.order.LineItem;
+
 import java.util.Currency;
 
 public class Product extends BaseModel {
@@ -8,7 +10,15 @@ public class Product extends BaseModel {
     private  Currency defaultCurrency;
     private transient ProductCategory productCategory;
     private transient Supplier supplier;
+    private transient LineItem lineItem;
 
+    public LineItem getLineItem() {
+        return lineItem;
+    }
+
+    public void setLineItem(LineItem lineItem) {
+        this.lineItem = lineItem;
+    }
 
     public Product(String name, float defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
         super(name, description);
