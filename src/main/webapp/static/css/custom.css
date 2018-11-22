@@ -169,9 +169,10 @@ h1, h3, h4 {
 .checkoutButton{
     background-color: rgba(0,0,0,0);
     background-image: none;
-    border: 0.5px solid dimgrey;
+    border: none;
 }
 
 .checkoutButton:hover{
     background-color: #FFD700;
+    border: 0.5px solid dimgrey;
 }
