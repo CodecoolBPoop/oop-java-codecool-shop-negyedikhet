@@ -38,20 +38,20 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-lg modal-dialog-centered">
             <div class="modal-header">
-                <h5 class="modal-title">Szatyika</h5>
+                <h3 class="modal-title">Your shopping cart</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table">
+                <table class="table" id = "shoppingCart">
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Price per unit</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">#</th>
+                        <th scope="col">Total price</th>
+                        <th scope="col">Edit quantity</th>
                     </tr>
                     </thead>
                     <tbody id="body">
@@ -59,7 +59,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="checkoutButton">Checkout</button>
+                <button type="button" class="btn btn-success" id="checkoutButton">Checkout</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

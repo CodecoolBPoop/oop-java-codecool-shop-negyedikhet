@@ -220,3 +220,31 @@ img {
     border: none;
 }
 
+#shoppingCart {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+
+}
+
+#shoppingCart td, #shoppingCart th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#shoppingCart tr:nth-child(even){background-color: #f2f2f2;}
+
+#shoppingCart tr:hover {background-color: #ddd;}
+
+#shoppingCart th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgba(0, 49, 210, 0.55);
+    color: white;
+}
+
+.modal-header{
+    padding-bottom: 0;
+}
