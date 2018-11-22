@@ -30,24 +30,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
 </head>
 
-<body>
-
-<div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
-    <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="Cart">Szatyi</button>
-    </div>
-</div>
-
-<div>
-    <select id="selectioncategory">
-        <option th:each="category: ${categories}" value="default" th:attr="data-categoryid=${category.getId()}" th:value="${category.name}" th:text="${category.name}">category</option>
-    </select>
-    <select id="selectionsupplier">
-        <option th:each="supplier: ${suppliers}" value="default" th:attr="data-supplierid=${supplier.getId()}" th:value="${supplier.name}" th:text="${supplier.name}">supplier</option>
-    </select>
-</div>
-
+<body class="indexBody">
     <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content modal-lg modal-dialog-centered">
@@ -81,6 +64,21 @@
     </div>
 
 <div class="container">
+    <div class="indexHeader">
+        <h1>Christmas Shop</h1>
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="Cart">Szatyi</button>
+    </div>
+    <div>
+        <select id="selectioncategory">
+            <option th:each="category: ${categories}" value="default" th:attr="data-categoryid=${category.getId()}" th:value="${category.name}" th:text="${category.name}">category</option>
+        </select>
+        <select id="selectionsupplier">
+            <option th:each="supplier: ${suppliers}" value="default" th:attr="data-supplierid=${supplier.getId()}" th:value="${supplier.name}" th:text="${supplier.name}">supplier</option>
+        </select>
+    </div>
+
     <div class="well well-sm">
         <strong th:text="${category.name}">Category Title</strong>
     </div>

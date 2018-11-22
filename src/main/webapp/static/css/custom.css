@@ -176,3 +176,20 @@ h1, h3, h4 {
     background-color: #FFD700;
     border: 0.5px solid dimgrey;
 }
+
+.indexHeader {
+    border-bottom: 1px solid rgba(5, 5, 5, 0.26);
+    border-radius: 1px;
+    text-align: center;
+}
+
+.indexBody{
+    background-repeat: no-repeat;
+    background-image: url("/static/img/indexbr.png");
+
+}
+
+.panel-body{
+    text-align: center;
+    background-color: #d42426;
+}
