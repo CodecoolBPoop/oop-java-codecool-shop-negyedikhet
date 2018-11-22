@@ -24,12 +24,16 @@ public class Initializer implements ServletContextListener {
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
 
         //setting up a new supplier
+        Supplier allSupplier = new Supplier("All", "All suppliers");
+        supplierDataStore.add(allSupplier);
         Supplier amazon = new Supplier("Amazon", "Digital content and services");
         supplierDataStore.add(amazon);
         Supplier lenovo = new Supplier("Lenovo", "Computers");
         supplierDataStore.add(lenovo);
 
         //setting up a new product category
+        ProductCategory allCategory = new ProductCategory("All", "All", "All products");
+        productCategoryDataStore.add(allCategory);
         ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
         productCategoryDataStore.add(tablet);
         ProductCategory boi = new ProductCategory("Boi", "Software", "Boiboi");

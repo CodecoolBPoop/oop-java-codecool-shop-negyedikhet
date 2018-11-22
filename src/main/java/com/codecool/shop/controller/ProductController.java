@@ -41,34 +41,49 @@ public class ProductController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         HttpSession mySession = req.getSession();
+
         if (mySession.getAttribute("order") == null) {
             Order myOrder = new Order();
             mySession.setAttribute("order", myOrder);
         }
-//        context.setVariables(params);
-        int categoryID;
-        if (req.getParameter("categoryID") != null) {
-            categoryID = Integer.parseInt(req.getParameter("categoryID"));
-        } else {
-            categoryID = 1;
-        }
 
+        Integer categoryID = null;
+        Integer supplierID = null;
         context.setVariable("recipient", "World");
         context.setVariable("suppliers", supplierDataStore.getAll());
         context.setVariable("categories", productCategoryDataStore.getAll());
-        context.setVariable("category", productCategoryDataStore.find(categoryID));
-        context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(categoryID)));
 
-        int supplierID;
-        if (req.getParameter("supplierID") != null) {
+        if (!categoryIsNullOrOne(req)) {
+            categoryID = Integer.parseInt(req.getParameter("categoryID"));
+            context.setVariable("category", productCategoryDataStore.find(categoryID));
+            context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(categoryID)));
+        }
+        if (!supplierIsNullOrOne(req)) {
             supplierID = Integer.parseInt(req.getParameter("supplierID"));
             context.setVariable("supplier", supplierDataStore.find(supplierID));
+            context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(supplierID)));
+        }
+
+        if (!categoryIsNullOrOne(req) && !supplierIsNullOrOne(req)) {
             List<Product> productsByCategory = productDataStore.getBy(productCategoryDataStore.find(categoryID));
             List<Product> productsBySupplier = productDataStore.getBy(supplierDataStore.find(supplierID));
             List<Product> categorySupplierIntersection = productsByCategory.stream().filter(c -> productsBySupplier.contains(c)).collect(Collectors.toList());
             context.setVariable("products", categorySupplierIntersection);
         }
 
+        if (categoryIsNullOrOne(req)) {
+            context.setVariable("category", productCategoryDataStore.find(1));
+        }
+
+        if (supplierIsNullOrOne(req)) {
+            context.setVariable("supplier", supplierDataStore.find(1));
+        }
+
+        if (categoryIsNullOrOne(req) && supplierIsNullOrOne(req)) {
+            context.setVariable("category", productCategoryDataStore.find(1));
+            context.setVariable("supplier", supplierDataStore.find(1));
+            context.setVariable("products", productDataStore.getAll());
+        }
         engine.process("product/index.html", context, resp.getWriter());
     }
 
@@ -79,5 +94,13 @@ public class ProductController extends HttpServlet {
         HttpSession mySession = req.getSession();
         Order myOrder = (Order) mySession.getAttribute("order");
         out.print(new Gson().toJson(myOrder.getCartContent()));
+    }
+
+    public boolean categoryIsNullOrOne(HttpServletRequest req) {
+        return req.getParameter("categoryID") == null || req.getParameter("categoryID").equals("1");
+    }
+
+    public boolean supplierIsNullOrOne(HttpServletRequest req) {
+        return req.getParameter("supplierID") == null || req.getParameter("supplierID").equals("1");
     }
 }
