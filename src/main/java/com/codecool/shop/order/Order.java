@@ -49,6 +49,26 @@ public class Order {
         System.out.println("Cart size:" + cartSize);
     }
 
+    public void subtractItemFromCart(Product product) {
+
+        for (LineItem item : cartContent) {
+            if (item.getProduct().equals(product) && item.getQuantity() > 1) {
+                item.decreaseQuantity();
+                item.calculateTotalPrice();
+                calculateCartSize();
+                System.out.println("Cart content:" + cartContent);
+                System.out.println("Cart size:" + cartSize);
+                return;
+            } else {
+                cartContent.remove(new LineItem(product));
+                calculateCartSize();
+                System.out.println("Cart content:" + cartContent);
+                System.out.println("Cart size:" + cartSize);
+            }
+        }
+    }
+
+
     public void calculateCartSize() {
         cartSize = cartContent.stream().mapToInt(LineItem::getQuantity).sum();
     }
