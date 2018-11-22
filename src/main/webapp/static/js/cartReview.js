@@ -40,7 +40,7 @@ function init(){
                         console.log(list_num)
 
                     }
-                    let total_price = document.createTextNode(list_num + "USD");
+                    let total_price = document.createTextNode(list_num + " USD");
                     let new_list_element = document.createElement("li");
                     new_list_element.classList.add("list-group-item");
                     new_list_element.setAttribute("id","total");
@@ -92,7 +92,7 @@ function add_buttons(rem_btn, rem_btn_text, add_btn, add_btn_text, new_table_cel
                     console.log("Successfully added to cart");
                     let totalPrice = parseInt(add_btn.parentNode.previousSibling.innerHTML);
                     let totalList = document.getElementById("total");
-                    totalList.innerHTML = (parseInt(totalList.innerHTML) + totalPrice).toString() + "USD"
+                    totalList.innerHTML = (parseInt(totalList.innerHTML) + totalPrice).toString() + " USD"
                 }
                 else {
                     alert("Status: " + status)
@@ -116,7 +116,7 @@ function add_buttons(rem_btn, rem_btn_text, add_btn, add_btn_text, new_table_cel
                     console.log("Successfully subtracted from cart")
                     let totalPrice = parseInt(rem_btn.parentNode.previousSibling.innerHTML);
                     let totalList = document.getElementById("total");
-                    totalList.innerHTML = (parseInt(totalList.innerHTML) - totalPrice).toString() + "USD"
+                    totalList.innerHTML = (parseInt(totalList.innerHTML) - totalPrice).toString() + " USD"
                 } else {
                     alert("Status: " + status)
                 }
