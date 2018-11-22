@@ -90,9 +90,11 @@ function add_buttons(rem_btn, rem_btn_text, add_btn, add_btn_text, new_table_cel
                     let quantity = add_btn.parentNode.previousSibling.previousSibling.innerHTML;
                     add_btn.parentNode.previousSibling.previousSibling.innerHTML = (parseInt(quantity) + 1).toString();
                     console.log("Successfully added to cart");
-                    let totalPrice = parseInt(add_btn.parentNode.previousSibling.innerHTML);
+                    let itemPrice = parseInt(rem_btn.parentNode.previousSibling.previousSibling.previousSibling.innerHTML);
                     let totalList = document.getElementById("total");
-                    totalList.innerHTML = (parseInt(totalList.innerHTML) + totalPrice).toString() + "USD"
+                    totalList.innerHTML = (parseInt(totalList.innerHTML) + itemPrice).toString() + "USD";
+                    rem_btn.parentNode.previousSibling.innerHTML =(parseInt(quantity)+1)*itemPrice;
+                    console.log(parseInt(quantity)*itemPrice)
                 }
                 else {
                     alert("Status: " + status)
@@ -113,10 +115,12 @@ function add_buttons(rem_btn, rem_btn_text, add_btn, add_btn_text, new_table_cel
                     if (parseInt(rem_btn.parentNode.previousSibling.previousSibling.innerHTML)=== 0) {
                         rem_btn.parentElement.parentElement.remove();
                     }
-                    console.log("Successfully subtracted from cart")
-                    let totalPrice = parseInt(rem_btn.parentNode.previousSibling.innerHTML);
+                    console.log("Successfully subtracted from cart");
+                    let itemPrice = parseInt(rem_btn.parentNode.previousSibling.previousSibling.previousSibling.innerHTML);
                     let totalList = document.getElementById("total");
-                    totalList.innerHTML = (parseInt(totalList.innerHTML) - totalPrice).toString() + "USD"
+                    totalList.innerHTML = (parseInt(totalList.innerHTML) - itemPrice).toString() + "USD";
+                    rem_btn.parentNode.previousSibling.innerHTML = (parseInt(quantity) -1) *itemPrice;
+                    console.log(parseInt(quantity)*itemPrice)
                 } else {
                     alert("Status: " + status)
                 }
