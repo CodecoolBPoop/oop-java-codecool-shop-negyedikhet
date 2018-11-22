@@ -24,10 +24,11 @@ function init(){
                         productId = response[i]["productId"];
                         for(let header of headers){
                             let {new_table_cell, rem_btn, rem_btn_text, add_btn, add_btn_text} = create_btn_variables();
-                            if(header==="#"){
+                            if(header==="#" && response[i]["quantity"] > 0){
                                 add_buttons(rem_btn, rem_btn_text, add_btn, add_btn_text, new_table_cell, new_table_row, productId, headers, tbody);
 
                             }
+                            else if (response[i]["quantity"]===0) {}
                             else {
                                 let cell_text = document.createTextNode(response[i][header]);
                                 new_table_cell.appendChild(cell_text);
@@ -41,6 +42,8 @@ function init(){
                     }
                     let total_price = document.createTextNode(list_num + "USD");
                     let new_list_element = document.createElement("li");
+                    new_list_element.classList.add("list-group-item");
+                    new_list_element.setAttribute("id","total");
                     new_list_element.appendChild(total_price);
                     tbody.appendChild(new_list_element);
                 }
@@ -86,8 +89,12 @@ function add_buttons(rem_btn, rem_btn_text, add_btn, add_btn_text, new_table_cel
                 if (status === "success"){
                     let quantity = add_btn.parentNode.previousSibling.previousSibling.innerHTML;
                     add_btn.parentNode.previousSibling.previousSibling.innerHTML = (parseInt(quantity) + 1).toString();
-                    console.log("Successfully added to cart")
-                } else {
+                    console.log("Successfully added to cart");
+                    let totalPrice = parseInt(add_btn.parentNode.previousSibling.innerHTML);
+                    let totalList = document.getElementById("total");
+                    totalList.innerHTML = (parseInt(totalList.innerHTML) + totalPrice).toString() + "USD"
+                }
+                else {
                     alert("Status: " + status)
                 }
             }
@@ -103,7 +110,13 @@ function add_buttons(rem_btn, rem_btn_text, add_btn, add_btn_text, new_table_cel
                 if (status === "success"){
                     let quantity = rem_btn.parentNode.previousSibling.previousSibling.innerHTML;
                     rem_btn.parentNode.previousSibling.previousSibling.innerHTML = (parseInt(quantity) - 1).toString();
+                    if (parseInt(rem_btn.parentNode.previousSibling.previousSibling.innerHTML)=== 0) {
+                        rem_btn.parentElement.parentElement.remove();
+                    }
                     console.log("Successfully subtracted from cart")
+                    let totalPrice = parseInt(rem_btn.parentNode.previousSibling.innerHTML);
+                    let totalList = document.getElementById("total");
+                    totalList.innerHTML = (parseInt(totalList.innerHTML) - totalPrice).toString() + "USD"
                 } else {
                     alert("Status: " + status)
                 }
