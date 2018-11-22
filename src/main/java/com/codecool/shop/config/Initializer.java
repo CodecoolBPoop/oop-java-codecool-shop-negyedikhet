@@ -24,6 +24,9 @@ public class Initializer implements ServletContextListener {
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
 
         //setting up a new supplier
+        Supplier allSupplier = new Supplier("All", "All suppliers");
+        supplierDataStore.add(allSupplier);
+
         Supplier lipoti = new Supplier("Lipoti", "Freshly baked products");
         supplierDataStore.add(lipoti);
         Supplier gucci = new Supplier("Gucci", "Clothing");
@@ -39,6 +42,8 @@ public class Initializer implements ServletContextListener {
 
 
         //setting up a new product category
+        ProductCategory allCategory = new ProductCategory("All", "All", "All products");
+        productCategoryDataStore.add(allCategory);
         ProductCategory clothes = new ProductCategory("Clothes", "Clothes", "Festive sweaters.");
         productCategoryDataStore.add(clothes);
         ProductCategory cookie = new ProductCategory("Cookie", "Food", "Finest freshly baked christmas cookies.");

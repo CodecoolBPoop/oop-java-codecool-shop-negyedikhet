@@ -6,6 +6,7 @@ public class LineItem {
 
     private transient Product product;
     private String productName;
+    private int productId;
     private double productPrice;
     private int quantity;
     private double totalPrice;
@@ -38,6 +39,10 @@ public class LineItem {
         this.quantity++;
     }
 
+    public void decreaseQuantity() {
+        this.quantity--;
+    }
+
     public void calculateTotalPrice() {
         this.totalPrice = quantity * productPrice;
     }
@@ -49,6 +54,7 @@ public class LineItem {
     public LineItem(Product product) {
         this.product = product;
         this.productName = product.getName();
+        this.productId = product.getId();
         this.productPrice = product.getDefaultPrice();
         this.quantity = 1;
         this.totalPrice = productPrice;

@@ -1,6 +1,7 @@
 package com.codecool.shop.order;
 
 import com.codecool.shop.model.Product;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +44,35 @@ public class Order {
             }
         }
 
-        cartContent.add(new LineItem(product));
+        product.setLineItem(new LineItem(product));
+        cartContent.add(product.getLineItem());
         calculateCartSize();
         System.out.println("Cart content:" + cartContent);
         System.out.println("Cart size:" + cartSize);
     }
+
+    public void subtractItemFromCart(Product product) {
+        LineItem lineItemToRemove = null;
+        for (LineItem item : cartContent) {
+            if (item.getProduct().equals(product) && item.getQuantity() > 1) {
+                item.decreaseQuantity();
+                item.calculateTotalPrice();
+                calculateCartSize();
+                System.out.println("Cart content:" + cartContent);
+                System.out.println("Cart size:" + cartSize);
+                return;
+            } else if (item.getProduct().equals(product) && item.getQuantity() == 1) {
+                lineItemToRemove = product.getLineItem();
+            }
+        }
+        if (lineItemToRemove != null) {
+            cartContent.remove(product.getLineItem());
+            calculateCartSize();
+            System.out.println("Cart content:" + cartContent);
+            System.out.println("Cart size:" + cartSize);
+        }
+    }
+
 
     public void calculateCartSize() {
         cartSize = cartContent.stream().mapToInt(LineItem::getQuantity).sum();
