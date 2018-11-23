@@ -27,10 +27,10 @@ public class Initializer implements ServletContextListener {
         Supplier allSupplier = new Supplier("All", "All suppliers");
         supplierDataStore.add(allSupplier);
 
-        Supplier lipoti = new Supplier("Lipoti", "Freshly baked products");
-        supplierDataStore.add(lipoti);
         Supplier gucci = new Supplier("Gucci", "Clothing");
         supplierDataStore.add(gucci);
+        Supplier lipoti = new Supplier("Lipoti", "Freshly baked products");
+        supplierDataStore.add(lipoti);
         Supplier surefire = new Supplier("Surefire", "Christmas decorations");
         supplierDataStore.add(surefire);
         Supplier milka = new Supplier("Milka", "Christmas chocolates");
