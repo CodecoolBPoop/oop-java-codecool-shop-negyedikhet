@@ -9,11 +9,21 @@ import java.util.List;
 public interface ProductDao {
 
     void add(Product product);
-    Product find(int id);
+    Optional<Product> find(int id);
     void remove(int id);
 
-    List<Product> getAll();
-    List<Product> getBy(Supplier supplier);
-    List<Product> getBy(ProductCategory productCategory);
+    Stream<Product> getAll();
+    Stream<Product> getBy(Supplier supplier);
+    Stream<Product> getBy(ProductCategory productCategory);
+    default Stream<Product> getBy(ProductCategory productCategory, Supplier supplier) {
+        if (productCategory == null && supplier == null) {
+            return getAll();
+        } else if (productCategory == null) {
+            return getBy(supplier);
+        } else if (supplier) {
+            return getBy(productCategory);
+        }
 
+        // TODO: intersect streams
+    }
 }
