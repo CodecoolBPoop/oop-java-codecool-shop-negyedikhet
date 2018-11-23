@@ -5,6 +5,8 @@ import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.Optional;
 
 public interface ProductDao {
 
@@ -20,7 +22,7 @@ public interface ProductDao {
             return getAll();
         } else if (productCategory == null) {
             return getBy(supplier);
-        } else if (supplier) {
+        } else if (supplier == null) {
             return getBy(productCategory);
         }
 
