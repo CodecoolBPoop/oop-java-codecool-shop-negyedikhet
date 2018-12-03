@@ -5,7 +5,7 @@ import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 public class ProductDaoJdbc implements ProductDao {
     @Override
@@ -24,17 +24,17 @@ public class ProductDaoJdbc implements ProductDao {
     }
 
     @Override
-    public List<Product> getAll() {
+    public Stream<Product> getAll() {
         return null;
     }
 
     @Override
-    public List<Product> getBy(Supplier supplier) {
+    public Stream<Product> getBy(Supplier supplier) {
         return null;
     }
 
     @Override
-    public List<Product> getBy(ProductCategory productCategory) {
+    public Stream<Product> getBy(ProductCategory productCategory) {
         return null;
     }
 }
