@@ -66,7 +66,7 @@ public class ProductController extends HttpServlet {
         }
         if (!supplierIsNullOrOne(req)) {
             supplierID = Integer.parseInt(req.getParameter("supplierID"));
-            supplierSelected = supplierDataStore.find(supplierID)
+            supplierSelected = supplierDataStore.find(supplierID);
         } else {
             supplierID = 1;
             supplierSelected = null;
