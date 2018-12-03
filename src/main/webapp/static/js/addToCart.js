@@ -14,7 +14,14 @@ function addToCart() {
                 {
                     "productId": productId
 
+                }, function(response, status){
+                    if (status==='success'){
+                        $('#add-cart-success').hide();
+                        $('#add-cart-success').show();
+                        $('#add-cart-success').delay(1500).fadeOut('slow')
+                    }
                 }
+
             );
         })
     }
