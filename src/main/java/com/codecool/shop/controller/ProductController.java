@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @WebServlet(urlPatterns = {"/"})
@@ -71,10 +72,10 @@ public class ProductController extends HttpServlet {
             supplierID = 1;
             supplierSelected = null;
         }
-
+        Stream<Product> productStream = productDataStore.getBy(categorySelected, supplierSelected);
         context.setVariable("category", productCategoryDataStore.find(categoryID));
         context.setVariable("supplier", supplierDataStore.find(supplierID));
-        context.setVariable("products", productDataStore.getBy(categorySelected, supplierSelected));
+        context.setVariable("products", productStream.collect(Collectors.toList()));
 
         engine.process("product/index.html", context, resp.getWriter());
     }
