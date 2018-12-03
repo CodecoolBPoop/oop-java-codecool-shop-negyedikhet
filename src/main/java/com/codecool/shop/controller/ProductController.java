@@ -6,6 +6,8 @@ import com.codecool.shop.dao.SupplierDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.model.ProductCategory;
+import com.codecool.shop.model.Supplier;
 import com.codecool.shop.dao.implementation.SupplierDaoJdbc;
 import com.codecool.shop.order.Order;
 import com.google.gson.Gson;
@@ -24,6 +26,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @WebServlet(urlPatterns = {"/"})
@@ -48,43 +51,33 @@ public class ProductController extends HttpServlet {
             mySession.setAttribute("order", myOrder);
         }
 
-        Integer categoryID = null;
-        Integer supplierID = null;
+        Integer categoryID;
+        Integer supplierID;
+        ProductCategory categorySelected;
+        Supplier supplierSelected;
         context.setVariable("recipient", "World");
         context.setVariable("suppliers", supplierDataStore.getAll());
         context.setVariable("categories", productCategoryDataStore.getAll());
 
         if (!categoryIsNullOrOne(req)) {
             categoryID = Integer.parseInt(req.getParameter("categoryID"));
-            context.setVariable("category", productCategoryDataStore.find(categoryID));
-            context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(categoryID)));
+            categorySelected = productCategoryDataStore.find(categoryID);
+        } else {
+            categoryID = 1;
+            categorySelected = null;
         }
         if (!supplierIsNullOrOne(req)) {
             supplierID = Integer.parseInt(req.getParameter("supplierID"));
-            context.setVariable("supplier", supplierDataStore.find(supplierID));
-            context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(supplierID)));
+            supplierSelected = supplierDataStore.find(supplierID);
+        } else {
+            supplierID = 1;
+            supplierSelected = null;
         }
+        Stream<Product> productStream = productDataStore.getBy(categorySelected, supplierSelected);
+        context.setVariable("category", productCategoryDataStore.find(categoryID));
+        context.setVariable("supplier", supplierDataStore.find(supplierID));
+        context.setVariable("products", productStream.collect(Collectors.toList()));
 
-        if (!categoryIsNullOrOne(req) && !supplierIsNullOrOne(req)) {
-            List<Product> productsByCategory = productDataStore.getBy(productCategoryDataStore.find(categoryID));
-            List<Product> productsBySupplier = productDataStore.getBy(supplierDataStore.find(supplierID));
-            List<Product> categorySupplierIntersection = productsByCategory.stream().filter(c -> productsBySupplier.contains(c)).collect(Collectors.toList());
-            context.setVariable("products", categorySupplierIntersection);
-        }
-
-        if (categoryIsNullOrOne(req)) {
-            context.setVariable("category", productCategoryDataStore.find(1));
-        }
-
-        if (supplierIsNullOrOne(req)) {
-            context.setVariable("supplier", supplierDataStore.find(1));
-        }
-
-        if (categoryIsNullOrOne(req) && supplierIsNullOrOne(req)) {
-            context.setVariable("category", productCategoryDataStore.find(1));
-            context.setVariable("supplier", supplierDataStore.find(1));
-            context.setVariable("products", productDataStore.getAll());
-        }
         engine.process("product/index.html", context, resp.getWriter());
     }
 

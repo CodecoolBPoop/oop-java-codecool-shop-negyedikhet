@@ -4,14 +4,12 @@ import com.codecool.shop.model.Supplier;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 
-import java.util.List;
 import java.util.stream.Stream;
-import java.util.Optional;
 
 public interface ProductDao {
 
     void add(Product product);
-    Optional<Product> find(int id);
+    Product find(int id);
     void remove(int id);
 
     Stream<Product> getAll();
@@ -24,8 +22,8 @@ public interface ProductDao {
             return getBy(supplier);
         } else if (supplier == null) {
             return getBy(productCategory);
+        } else {
+            return getBy(productCategory).filter(p -> p.getSupplier().equals(supplier));
         }
-
-        // TODO: intersect streams
     }
 }
