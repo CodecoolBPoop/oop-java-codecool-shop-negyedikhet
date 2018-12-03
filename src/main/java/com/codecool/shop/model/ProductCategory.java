@@ -9,6 +9,9 @@ public class ProductCategory extends BaseModel {
 
     public ProductCategory(String name, String department, String description) {
         super(name);
+        if (name == null || department == null || description == null) {
+            throw new IllegalArgumentException();
+        }
         this.department = department;
         this.products = new ArrayList<>();
     }
