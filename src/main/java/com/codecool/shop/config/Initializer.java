@@ -3,6 +3,7 @@ package com.codecool.shop.config;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
+import com.codecool.shop.dao.implementation.ProductCategoryDaoJdbc;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoJdbc;
@@ -20,12 +21,12 @@ public class Initializer implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ProductDao productDataStore = ProductDaoMem.getInstance();
-        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
+        ProductCategoryDao productCategoryDataStore = new ProductCategoryDaoJdbc();
         SupplierDao supplierDataStore =  new SupplierDaoJdbc();
 
 
         //setting up a new supplier
-        Supplier allSupplier = new Supplier("All", "All suppliers");
+       /* Supplier allSupplier = new Supplier("All", "All suppliers");
         supplierDataStore.add(allSupplier);
 
         Supplier gucci = new Supplier( "Gucci", "Clothing");
@@ -38,10 +39,11 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(milka);
         Supplier rudolf = new Supplier( "Rudolf", "Artificial christmas trees");
         supplierDataStore.add(rudolf);
+        */
 
 
         //setting up a new product category
-        ProductCategory allCategory = new ProductCategory("All", "All", "All products");
+      /*  ProductCategory allCategory = new ProductCategory("All", "All", "All products");
         productCategoryDataStore.add(allCategory);
         ProductCategory clothes = new ProductCategory("Clothes", "Clothes", "Festive sweaters.");
         productCategoryDataStore.add(clothes);
@@ -53,10 +55,11 @@ public class Initializer implements ServletContextListener {
         productCategoryDataStore.add(chocolatecandy);
         ProductCategory tree = new ProductCategory("Christmas Tree", "Decoration", "Christmas trees");
         productCategoryDataStore.add(tree);
+        */
 
 
         //setting up products and printing it
-        productDataStore.add(new Product("Sweater with bow", 25, "USD", "Beautiful gift for your loved ones.", clothes, gucci));
+      /*  productDataStore.add(new Product("Sweater with bow", 25, "USD", "Beautiful gift for your loved ones.", clothes, gucci));
         productDataStore.add(new Product("Star Wars sweater", 32, "USD", "The perfect present for Star Wars fans. ", clothes, gucci));
         productDataStore.add(new Product("Kitten sweater", 39, "USD", "Surprise your beloved girlfriend with kittens!", clothes, gucci));
         productDataStore.add(new Product("Gingerbread - Tree", 9, "USD", "Finest freshly baked gingerbread.", cookie, lipoti));
@@ -76,6 +79,6 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Xmas Tree - Soft", 49, "USD", "Christmas tree with especially soft leaves", tree, rudolf));
         productDataStore.add(new Product("Xmas Tree - Forest", 79, "USD", "Forest Christmas tree", tree, rudolf));
         productDataStore.add(new Product("Xmas Tree - Classic", 39, "USD", "Classic Christmas tree", tree, rudolf));
-
+        */
     }
 }
