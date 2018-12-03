@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS productcategories;
 CREATE TABLE productcategories
 (
 id SERIAL PRIMARY KEY NOT NULL,
-name unique varchar(50) NOT NULL,
+name  varchar(50) NOT NULL,
 department varchar(60) NOT NULL,
 description varchar(255) NOT NULL
 );
@@ -18,14 +18,14 @@ description varchar(255) NOT NULL
 CREATE TABLE suppliers
 (
 id SERIAL PRIMARY KEY NOT NULL,
-name unique varchar(50) NOT NULL,
+name  varchar(50) NOT NULL,
 description varchar(255) NOT NULL
 );
 
 CREATE TABLE products
 (
 id SERIAL PRIMARY KEY NOT NULL,
-name unique varchar(50) NOT NULL,
+name  varchar(50) NOT NULL,
 defaultprice float NOT NULL,
 currency varchar(10) NOT NULL,
 description varchar(255),
@@ -37,7 +37,7 @@ CREATE TABLE customers
 (
 id SERIAL PRIMARY KEY NOT NULL,
 full_name varchar(255) NOT NULL,
-email unique varchar(255) NOT NULL,
+email  varchar(255) NOT NULL,
 phone varchar(255) NOT NULL,
 billing_address varchar(255) NOT NULL,
 shipping_Address int NOT NULL
@@ -60,9 +60,6 @@ order_id int NOT NULL REFERENCES orders(id),
 product_id int NOT NULL REFERENCES products(id),
 quantity int
 );
-
-
-
 
 
 
