@@ -7,35 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupplierDaoJdbc implements SupplierDao {
+public class SupplierDaoJdbc extends ConnectionHandler implements SupplierDao {
 
-    private static final String DATABASE = "jdbc:postgresql://localhost:5432/codecoolshop";
-    private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "postgres";
-
-    public int calculateNextId(){
-        String query = "SELECT id FROM suppliers ORDER BY id DESC LIMIT 1;";
-        int result;
-
-        try (Connection connection = getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query);
-        ) {
-            if (resultSet.next()){
-                 result = Integer.parseInt(resultSet.getString("id"));
-                return result+1;
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return 3;
-    }
     @Override
     public void add(Supplier supplier) {
-        supplier.setId(calculateNextId());
-
         String query = "INSERT INTO suppliers (name, description) " +
                 "VALUES ('" + supplier.getName() + "', '" + supplier.getDescription() + "');";
         executeQuery(query);
@@ -97,24 +72,6 @@ public class SupplierDaoJdbc implements SupplierDao {
         }
 
         return resultList;
-    }
-
-    private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(
-                DATABASE,
-                DB_USER,
-                DB_PASSWORD);
-    }
-
-    private void executeQuery(String query) {
-        try (Connection connection = getConnection();
-             Statement statement = connection.createStatement();
-        ) {
-            statement.execute(query);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }
 
