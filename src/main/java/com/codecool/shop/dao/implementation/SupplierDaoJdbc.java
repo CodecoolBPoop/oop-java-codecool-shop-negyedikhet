@@ -51,7 +51,7 @@ public class SupplierDaoJdbc extends ConnectionHandler implements SupplierDao {
     @Override
     public List<Supplier> getAll() {
         String query = "SELECT * FROM suppliers;";
-        int id = 1;
+        int id;
         List<Supplier> resultList = new ArrayList<>();
 
         try (Connection connection = getConnection();
@@ -59,10 +59,10 @@ public class SupplierDaoJdbc extends ConnectionHandler implements SupplierDao {
              ResultSet resultSet = statement.executeQuery(query);
         ) {
             while (resultSet.next()) {
+                id = resultSet.getInt("id");
                 Supplier result = new Supplier(resultSet.getString("name"),
                         resultSet.getString("description"));
                 result.setId(id);
-                id++;
                 resultList.add(result);
             }
 
