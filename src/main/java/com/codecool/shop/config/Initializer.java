@@ -3,10 +3,7 @@ package com.codecool.shop.config;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoJdbc;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.dao.implementation.SupplierDaoJdbc;
+import com.codecool.shop.dao.implementation.*;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
@@ -20,15 +17,19 @@ public class Initializer implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        ProductDao productDataStore = ProductDaoMem.getInstance();
+
+        /**
+         * Use fill_db.sql instead of this, so it wont load the db with data all the time, etc
+         * this class can be eliminated later
+         * */
+        /*
         ProductCategoryDao productCategoryDataStore = new ProductCategoryDaoJdbc();
         SupplierDao supplierDataStore =  new SupplierDaoJdbc();
-
+        ProductDao productDataStore = new ProductDaoJdbc();
 
         //setting up a new supplier
         Supplier allSupplier = new Supplier("All", "All suppliers");
         supplierDataStore.add(allSupplier);
-
         Supplier gucci = new Supplier( "Gucci", "Clothing");
         supplierDataStore.add(gucci);
         Supplier lipoti = new Supplier("Lipoti", "Freshly baked products");
@@ -77,6 +78,6 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Xmas Tree - Soft", 49, "USD", "Christmas tree with especially soft leaves", tree, rudolf));
         productDataStore.add(new Product("Xmas Tree - Forest", 79, "USD", "Forest Christmas tree", tree, rudolf));
         productDataStore.add(new Product("Xmas Tree - Classic", 39, "USD", "Classic Christmas tree", tree, rudolf));
-
+        */
     }
 }
