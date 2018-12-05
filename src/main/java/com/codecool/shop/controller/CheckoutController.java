@@ -23,7 +23,11 @@ public class CheckoutController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+        HttpSession mySession = req.getSession();
+        Order myOrder = (Order) mySession.getAttribute("order");
         context.setVariable("recipient", "World");
+        context.setVariable("description", "Jingling Webshop");
+        context.setVariable("amount", myOrder.getCartTotalPrice());
         engine.process("checkout.html", context, resp.getWriter());
     }
 

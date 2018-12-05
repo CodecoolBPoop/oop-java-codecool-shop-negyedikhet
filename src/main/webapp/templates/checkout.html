@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Christmas Shop</title>
@@ -107,8 +107,17 @@
         <div class="payrow">
             <div class="paycolumn">
                 <button type="button" id="paypal" class="btn btn-success checkoutButton"><img src="/static/img/paypal.png"></button>
-                <button type="button" id="creditcard" class="btn btn-success checkoutButton"><img src="/static/img/creditcard.png">
-                </button>
+                <form action="/confirm" method="POST">
+                    <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+                            th:attr="data-amount=${amount}, data-description=${description}"
+                            data-name="Jingling Elf-pants"
+                            data-image="/static/img/creditcard.png"
+                            data-locale="auto"
+                            data-zip-code="true">
+                    </script>
+                </form>
             </div>
         </div>
     </div>

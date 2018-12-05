@@ -72,5 +72,10 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>7.10.0</version>
+        </dependency>
     </dependencies>
 </project>
