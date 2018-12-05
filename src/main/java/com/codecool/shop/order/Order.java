@@ -41,7 +41,7 @@ public class Order {
     public void addItemToCart(Product product) {
 
         for (LineItem item : cartContent) {
-            if (item.getProduct().equals(product)) {
+            if (item.getProduct().getId() == product.getId()) {
                 item.increaseQuantity();
                 item.calculateTotalPrice();
                 calculateCartSize();
@@ -61,19 +61,22 @@ public class Order {
     public void subtractItemFromCart(Product product) {
         LineItem lineItemToRemove = null;
         for (LineItem item : cartContent) {
-            if (item.getProduct().equals(product) && item.getQuantity() > 1) {
+            if (item.getProduct().getId() == product.getId() && item.getQuantity() > 1) {
                 item.decreaseQuantity();
                 item.calculateTotalPrice();
                 calculateCartSize();
                 System.out.println("Cart content:" + cartContent);
                 System.out.println("Cart size:" + cartSize);
                 return;
-            } else if (item.getProduct().equals(product) && item.getQuantity() == 1) {
-                lineItemToRemove = product.getLineItem();
+            } else if (item.getProduct().getId() == product.getId() && item.getQuantity() == 1) {
+                lineItemToRemove = item.getProduct().getLineItem();
+                calculateCartSize();
+                System.out.println("Cart content:" + cartContent);
+                System.out.println("Cart size:" + cartSize);
             }
         }
         if (lineItemToRemove != null) {
-            cartContent.remove(product.getLineItem());
+            cartContent.remove(lineItemToRemove);
             calculateCartSize();
             System.out.println("Cart content:" + cartContent);
             System.out.println("Cart size:" + cartSize);

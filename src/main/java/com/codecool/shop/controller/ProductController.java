@@ -3,14 +3,12 @@ package com.codecool.shop.controller;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.implementation.*;
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 import com.codecool.shop.order.Order;
 import com.google.gson.Gson;
-import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Product;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -33,9 +31,9 @@ public class ProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProductDao productDataStore = ProductDaoMem.getInstance();
-        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
-        SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
+        ProductCategoryDaoJdbc productCategoryDataStore = ProductCategoryDaoJdbc.getInstance();
+        SupplierDaoJdbc supplierDataStore = SupplierDaoJdbc.getInstance();
+        ProductDaoJdbc productDataStore = ProductDaoJdbc.getInstance();
 
 //        Map params = new HashMap<>();
 //        params.put("category", productCategoryDataStore.find(1));
@@ -72,7 +70,7 @@ public class ProductController extends HttpServlet {
             supplierID = 1;
             supplierSelected = null;
         }
-        Stream<Product> productStream = productDataStore.getBy(categorySelected, supplierSelected);
+        Stream<Product> productStream = productDataStore.getByCategoryAndSupplier(categorySelected, supplierSelected);
         context.setVariable("category", productCategoryDataStore.find(categoryID));
         context.setVariable("supplier", supplierDataStore.find(supplierID));
         context.setVariable("products", productStream.collect(Collectors.toList()));

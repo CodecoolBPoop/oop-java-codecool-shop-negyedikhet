@@ -19,6 +19,10 @@ public class LineItem {
         return productName;
     }
 
+    public int getProductId() {
+        return productId;
+    }
+
     public void  setProductName(String productName) {
         this.productName = productName;
     }
