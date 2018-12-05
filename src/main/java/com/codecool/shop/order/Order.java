@@ -41,7 +41,7 @@ public class Order {
     public void addItemToCart(Product product) {
 
         for (LineItem item : cartContent) {
-            if (item.getProductId() == product.getId()) {
+            if (item.getProduct().getId() == product.getId()) {
                 item.increaseQuantity();
                 item.calculateTotalPrice();
                 calculateCartSize();
@@ -61,14 +61,14 @@ public class Order {
     public void subtractItemFromCart(Product product) {
         LineItem lineItemToRemove = null;
         for (LineItem item : cartContent) {
-            if (item.getProductId() == product.getId() && item.getQuantity() > 1) {
+            if (item.getProduct().getId() == product.getId() && item.getQuantity() > 1) {
                 item.decreaseQuantity();
                 item.calculateTotalPrice();
                 calculateCartSize();
                 System.out.println("Cart content:" + cartContent);
                 System.out.println("Cart size:" + cartSize);
                 return;
-            } else if (item.getProductId() == product.getId() && item.getQuantity() == 1) {
+            } else if (item.getProduct().getId() == product.getId() && item.getQuantity() == 1) {
                 lineItemToRemove = item.getProduct().getLineItem();
                 calculateCartSize();
                 System.out.println("Cart content:" + cartContent);
