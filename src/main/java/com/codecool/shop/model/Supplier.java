@@ -10,6 +10,9 @@ public class Supplier extends BaseModel {
     public Supplier(String name, String description) {
         super(name);
         this.description = description;
+        if (name == null || description == null) {
+            throw new IllegalArgumentException();
+        }
         this.products = new ArrayList<>();
     }
 

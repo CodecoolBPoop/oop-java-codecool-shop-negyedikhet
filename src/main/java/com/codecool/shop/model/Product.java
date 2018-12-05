@@ -22,6 +22,9 @@ public class Product extends BaseModel {
 
     public Product(String name, float defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
         super(name, description);
+        if (name == null || defaultPrice == 0 || defaultPrice < 0 || currencyString == null || productCategory == null || supplier == null) {
+            throw new IllegalArgumentException();
+        }
         this.setPrice(defaultPrice, currencyString);
         this.setSupplier(supplier);
         this.setProductCategory(productCategory);
