@@ -212,10 +212,9 @@ img {
 }
 
 .cart {
-    display: inline;
-    position: absolute;
-    right: 50px;
-    top: 50px;
+    position: fixed;
+    right: 2.5%;
+    bottom: 5%;
     background: none;
     border: none;
 }
@@ -247,4 +246,9 @@ img {
 
 .modal-header{
     padding-bottom: 0;
+}
+
+.alert-success{
+    position: fixed; top: 50%; right: 0;
+    width: 20%;
 }
