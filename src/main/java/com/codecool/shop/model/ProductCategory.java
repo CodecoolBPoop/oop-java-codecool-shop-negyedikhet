@@ -13,6 +13,7 @@ public class ProductCategory extends BaseModel {
             throw new IllegalArgumentException();
         }
         this.department = department;
+        this.description = description;
         this.products = new ArrayList<>();
     }
 

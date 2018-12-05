@@ -1,5 +1,6 @@
 package com.codecool.shop.dao;
 
+import com.codecool.shop.dao.implementation.ProductCategoryDaoJdbc;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.model.ProductCategory;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +14,7 @@ class ProductCategoryDaoTest {
 
     @BeforeEach
     void setUp() {
-        this.memory = ProductCategoryDaoMem.getInstance();
+        this.memory = ProductCategoryDaoJdbc.getInstance();
         this.dummyCategory = new ProductCategory("Test", "Test", "Test desc");
     }
 

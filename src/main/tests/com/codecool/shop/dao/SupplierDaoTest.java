@@ -1,5 +1,6 @@
 package com.codecool.shop.dao;
 
+import com.codecool.shop.dao.implementation.SupplierDaoJdbc;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Supplier;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +14,7 @@ class SupplierDaoTest {
 
     @BeforeEach
     void setUp() {
-        this.memory = SupplierDaoMem.getInstance();
+        this.memory = SupplierDaoJdbc.getInstance();
         this.dummySupplier = new Supplier("Test", "Test desc");
     }
 
