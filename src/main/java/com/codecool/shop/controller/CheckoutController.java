@@ -27,7 +27,8 @@ public class CheckoutController extends HttpServlet {
         Order myOrder = (Order) mySession.getAttribute("order");
         context.setVariable("recipient", "World");
         context.setVariable("description", "Jingling Webshop");
-        context.setVariable("amount", myOrder.getCartTotalPrice());
+        context.setVariable("amountpaypal", myOrder.getCartTotalPrice());
+        context.setVariable("amountcreditcard", myOrder.getCartTotalPrice()* 100);
         engine.process("checkout.html", context, resp.getWriter());
     }
 

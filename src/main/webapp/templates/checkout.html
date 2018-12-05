@@ -106,16 +106,58 @@
         </div>
         <div class="payrow">
             <div class="paycolumn">
-                <button type="button" id="paypal" class="btn btn-success checkoutButton"><img src="/static/img/paypal.png"></button>
+                <div id="paypal-button" th:attr="data-amount=${amountpaypal}"></div>
+                <script src="https://www.paypalobjects.com/api/checkout.js" ></script>
+                <script>
+                    paypal.Button.render({
+                        // Configure environment
+                        env: 'sandbox',
+                        client: {
+                            sandbox: 'demo_sandbox_client_id',
+                            production: 'demo_production_client_id'
+                        },
+                        // Customize button (optional)
+                        locale: 'en_US',
+                        style: {
+                            size: 'small',
+                            color: 'gold',
+                            shape: 'pill',
+                        },
+
+                        // Enable Pay Now checkout flow (optional)
+                        commit: true,
+
+                        // Set up a payment
+                        payment: function(data, actions) {
+                            return actions.payment.create({
+                                transactions: [{
+                                    amount: {
+                                        total: document.getElementById("paypal-button").dataset.amount,
+                                        currency: 'USD'
+                                    }
+                                }]
+                            });
+                        },
+                        // Execute the payment
+                        onAuthorize: function(data, actions) {
+                            return actions.payment.execute().then(function() {
+                                // Show a confirmation message to the buyer
+                                window.alert('Thank you for your purchase!');
+                            });
+                        }
+                    }, '#paypal-button');
+
+                </script>
                 <form action="/confirm" method="POST">
-                    <script
+                    <script id="creditscript"
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
-                            th:attr="data-amount=${amount}, data-description=${description}"
+                            th:attr="data-amount=${amountcreditcard}, data-description=${description}"
                             data-name="Jingling Elf-pants"
                             data-image="/static/img/creditcard.png"
                             data-locale="auto"
-                            data-zip-code="true">
+                            data-zip-code="true"
+                            defer>
                     </script>
                 </form>
             </div>
