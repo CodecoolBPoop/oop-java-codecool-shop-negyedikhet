@@ -9,6 +9,16 @@ import java.util.List;
 
 public class SupplierDaoJdbc extends ConnectionHandler implements SupplierDao {
 
+    private static SupplierDaoJdbc instance = null;
+    private SupplierDaoJdbc() {
+    }
+    public static SupplierDaoJdbc getInstance() {
+        if (instance == null) {
+            instance = new SupplierDaoJdbc();
+        }
+        return instance;
+    }
+
     @Override
     public void add(Supplier supplier) {
         String query = "INSERT INTO suppliers (name, description) " +

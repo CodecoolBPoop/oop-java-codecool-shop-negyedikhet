@@ -14,6 +14,16 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class ProductDaoJdbc extends ConnectionHandler implements ProductDao {
+    private static ProductDaoJdbc instance = null;
+    private ProductDaoJdbc() {
+    }
+    public static ProductDaoJdbc getInstance() {
+        if (instance == null) {
+            instance = new ProductDaoJdbc();
+        }
+        return instance;
+    }
+
     @Override
     public void add(Product product) {
 
@@ -61,12 +71,12 @@ public class ProductDaoJdbc extends ConnectionHandler implements ProductDao {
     }
 
     public Supplier getSupplierOfProduct(int id) {
-        SupplierDaoJdbc supplier = new SupplierDaoJdbc();
+        SupplierDaoJdbc supplier = SupplierDaoJdbc.getInstance();
         return supplier.find(id);
     }
 
     public ProductCategory getProductCategoryOfProduct(int id) {
-        ProductCategoryDaoJdbc category = new ProductCategoryDaoJdbc();
+        ProductCategoryDaoJdbc category = ProductCategoryDaoJdbc.getInstance();
         return category.find(id);
     }
 

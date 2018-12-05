@@ -12,6 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCategoryDaoJdbc extends ConnectionHandler implements ProductCategoryDao {
+
+    private static ProductCategoryDaoJdbc instance = null;
+    private ProductCategoryDaoJdbc() {
+    }
+    public static ProductCategoryDaoJdbc getInstance() {
+        if (instance == null) {
+            instance = new ProductCategoryDaoJdbc();
+        }
+        return instance;
+    }
+
     @Override
     public void add(ProductCategory category) {
         String query = "INSERT INTO productcategories (name, department, description) " +

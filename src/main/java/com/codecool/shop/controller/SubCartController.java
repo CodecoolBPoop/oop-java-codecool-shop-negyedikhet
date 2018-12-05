@@ -15,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/subtract-from-cart"})
 public class SubCartController extends HttpServlet {
-    ProductDaoJdbc productDataStore = new ProductDaoJdbc();
+    ProductDaoJdbc productDataStore = ProductDaoJdbc.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

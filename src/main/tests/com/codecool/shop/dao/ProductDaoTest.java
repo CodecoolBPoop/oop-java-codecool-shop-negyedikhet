@@ -1,8 +1,6 @@
 package com.codecool.shop.dao;
 
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.dao.implementation.*;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
@@ -24,9 +22,9 @@ class ProductDaoTest {
 
     @BeforeEach
     void setUp() {
-        this.productMemory = ProductDaoMem.getInstance();
-        this.categoryMemory = ProductCategoryDaoMem.getInstance();
-        this.supplierMemory = SupplierDaoMem.getInstance();
+        this.productMemory = ProductDaoJdbc.getInstance();
+        this.categoryMemory = ProductCategoryDaoJdbc.getInstance();
+        this.supplierMemory = SupplierDaoJdbc.getInstance();
         this.dummyCategory = new ProductCategory("Test", "Test", "Test desc");
         this.dummySupplier = new Supplier("Test", "Test desc");
         this.categoryMemory.add(dummyCategory);
