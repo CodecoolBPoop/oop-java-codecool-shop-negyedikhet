@@ -70,7 +70,7 @@ public class ProductController extends HttpServlet {
             supplierID = 1;
             supplierSelected = null;
         }
-        Stream<Product> productStream = productDataStore.getByCategoryAndSupplier(categorySelected, supplierSelected);
+        Stream<Product> productStream = productDataStore.getBy(categorySelected, supplierSelected);
         context.setVariable("category", productCategoryDataStore.find(categoryID));
         context.setVariable("supplier", supplierDataStore.find(supplierID));
         context.setVariable("products", productStream.collect(Collectors.toList()));
