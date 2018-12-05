@@ -37,7 +37,7 @@ public abstract class ConnectionHandler {
         }
     }
 
-    protected void readProperties() {
+    protected static void readProperties() {
         Properties prop = new Properties();
         InputStream input = null;
 
