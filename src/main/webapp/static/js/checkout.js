@@ -46,7 +46,6 @@ function checkout(checkbox) {
                 }, function(response, status) {
                     if (status === "success"){
                         console.log("Successfully checked out ");
-                        location.href = "pay?paymentMethod=" + queryvalue
                     } else {
                         alert("Status: " + status + "\nSomething went wrong, please try again!")
                     }

@@ -47,7 +47,7 @@ public class PaymentController extends HttpServlet {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("jinglingwebshop@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("kinga00099@gmail.com"));
+                    InternetAddress.parse(myOrder.getCustomer().getEmail()));
             message.setSubject("Purchase Successful");
             message.setText("Dear Customer,"
                     + "\n\n you bought: " + myOrder.getCartContent()
