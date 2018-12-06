@@ -68,15 +68,23 @@ VALUES ('All', 'All supplier'),
 ('Lipoti', 'Freshly baked products'),
 ('Surefire','Christmas decorations'),
 ('Milka','Christmas chocolates'),
-('Rudolf','Artificial christmas trees');
+('Rudolf','Artificial christmas trees'),
+('Kinder','Christmas chocolates'),
+('Lindt','Christmas chocolates'),
+('SantaWear','Festive clothes')
+;
+
 
 INSERT INTO productcategories (name, department, description)
 VALUES ('All', 'All', 'All categories'),
 ('Clothes', 'Clothes','Festive sweaters'),
 ('Cookie', 'Food','Finest freshly baked christmas cookies'),
 ('Decoration','Decoration','Small christmas decorations'),
-('ChocolateCandy','Food','Hungarian Christmas-candy speciality'),
-('Christmas Tree','Decoration','Christmas trees');
+('Chocolate','Food','Christmas chocolate specialities'),
+('Christmas Tree','Decoration','Christmas trees'),
+('Plush','Plush','Soft plushes')
+;
+
 
 INSERT INTO products (name, defaultprice, currency, description, productcategory_id, supplier_id)
 VALUES ('Sweater with bow', 25, 'USD', 'Beautiful gift for your loved ones.', 2, 2),
@@ -95,6 +103,19 @@ VALUES ('Sweater with bow', 25, 'USD', 'Beautiful gift for your loved ones.', 2,
 ('Xmas candy - Marzipan ', 9, 'USD', 'Marzipan flavoured hungarian choco-candy.', 5, 5),
 ('Xmas candy - Selection', 15, 'USD', 'Selection of hungarian choco-candy specialities.', 5, 5),
 ('Xmas candy - Nut', 9, 'USD', 'Nut flavoured hungarian choco-candy speciality.', 5, 5),
+('Classic Santa hat', 3, 'USD', 'Classic Santa hat. Wear anywhere', 2, 9),
+('Winter hat with horns', 10, 'USD', 'Soft and warm hat with cutte horns.', 2, 9),
+('Santa hat with Rudolf', 7, 'USD', 'Festive hat with Rudolf, the reindeer', 2, 9),
+('Winter hat with bow', 6, 'USD', 'Girly winter hat with a beautiful bow.', 2, 9),
+('Choco Santa by Milka', 3, 'USD', 'Classic Santa shaped milk-chocolate', 5, 5),
+('Choco Santa by Lindt', 3, 'USD', 'Santa-shaped bitter chocolate', 5, 8),
+('Choco Santa by Kinder', 4, 'USD', 'Santa shaped Kinder chocolate', 5, 7),
+('Classic reindeer Plush', 14, 'USD', 'Classic reindeer plush for children', 7, 6),
+('Cute Rudolf Plush', 15, 'USD', 'Cute Rudolf plush made of 100% cotton', 7, 6),
+('Girly Reindeer Plush', 19, 'USD', 'Dressed reindeer plush for girls', 7, 6),
+('Mini Santa Plush', 9, 'USD', 'Santa shaped plush made of cotton', 7, 9),
+('Festive Pusheen Plush', 12, 'USD', 'Popular Pusheen plush with bow', 7, 9),
+('Festive Pikachu Plush', 15, 'USD', 'Popular Pikachu plush with festive robe', 7, 9),
 ('Xmas Tree - Silver', 59, 'USD', 'Silver colored Christmas tree', 6, 6),
 ('Xmas Tree - Soft', 49, 'USD', 'Christmas tree with especially soft leaves', 6, 6),
 ('Xmas Tree - Forest', 79, 'USD', 'Forest Christmas tree', 6, 6),
