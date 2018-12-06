@@ -29,6 +29,7 @@ class ProductDaoTest {
         this.categoryMemory.add(dummyCategory);
         this.supplierMemory.add(dummySupplier);
         this.dummyProduct = new Product("Test", 42, "USD", "TestDesc ", dummyCategory, dummySupplier);
+        this.productMemory.add(dummyProduct);
     }
 
     @Test
