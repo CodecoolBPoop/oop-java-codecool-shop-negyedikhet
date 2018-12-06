@@ -17,7 +17,7 @@ public class Order {
 
     private List<LineItem> cartContent = new ArrayList<>();
     private int cartSize = 0;
-
+    private double cartTotalPrice = 0;
     public Customer getCustomer() {
         return customer;
     }
@@ -34,6 +34,8 @@ public class Order {
         return cartSize;
     }
 
+    public double getCartTotalPrice() { return cartTotalPrice; }
+
     public  List<LineItem> getCartContent() {
         return cartContent;
     }
@@ -45,6 +47,7 @@ public class Order {
                 item.increaseQuantity();
                 item.calculateTotalPrice();
                 calculateCartSize();
+                calculateCartTotalPrice();
                 System.out.println("Cart content:" + cartContent);
                 System.out.println("Cart size:" + cartSize);
                 return;
@@ -54,6 +57,7 @@ public class Order {
         product.setLineItem(new LineItem(product));
         cartContent.add(product.getLineItem());
         calculateCartSize();
+        calculateCartTotalPrice();
         System.out.println("Cart content:" + cartContent);
         System.out.println("Cart size:" + cartSize);
     }
@@ -65,12 +69,14 @@ public class Order {
                 item.decreaseQuantity();
                 item.calculateTotalPrice();
                 calculateCartSize();
+                calculateCartTotalPrice();
                 System.out.println("Cart content:" + cartContent);
                 System.out.println("Cart size:" + cartSize);
                 return;
             } else if (item.getProduct().getId() == product.getId() && item.getQuantity() == 1) {
                 lineItemToRemove = item.getProduct().getLineItem();
                 calculateCartSize();
+                calculateCartTotalPrice();
                 System.out.println("Cart content:" + cartContent);
                 System.out.println("Cart size:" + cartSize);
             }
@@ -78,6 +84,7 @@ public class Order {
         if (lineItemToRemove != null) {
             cartContent.remove(lineItemToRemove);
             calculateCartSize();
+            calculateCartTotalPrice();
             System.out.println("Cart content:" + cartContent);
             System.out.println("Cart size:" + cartSize);
         }
@@ -86,6 +93,10 @@ public class Order {
 
     public void calculateCartSize() {
         cartSize = cartContent.stream().mapToInt(LineItem::getQuantity).sum();
+    }
+
+    public void calculateCartTotalPrice() {
+        cartTotalPrice = cartContent.stream().mapToDouble(LineItem::getTotalPrice).sum();
     }
 
     public Order(){

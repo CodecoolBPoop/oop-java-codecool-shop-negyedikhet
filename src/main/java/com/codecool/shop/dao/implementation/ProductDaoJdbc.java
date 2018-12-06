@@ -106,7 +106,8 @@ public class ProductDaoJdbc extends ConnectionHandler implements ProductDao {
         return getProductStream(query);
     }
 
-    public Stream<Product> getByCategoryAndSupplier(ProductCategory category, Supplier supplier){
+    @Override
+    public Stream<Product> getBy(ProductCategory category, Supplier supplier){
         if (category == null && supplier == null) {
             return this.getAll();
         } else if (category == null) {

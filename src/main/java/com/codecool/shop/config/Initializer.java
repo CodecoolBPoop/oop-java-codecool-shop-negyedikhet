@@ -22,11 +22,6 @@ public class Initializer implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-
-        /**
-         * Use fill_db.sql instead of this, so it wont load the db with data all the time, etc
-         * this class can be eliminated later
-         * */
         /*
         ProductCategoryDao productCategoryDataStore = new ProductCategoryDaoJdbc();
         SupplierDao supplierDataStore =  new SupplierDaoJdbc();

@@ -7,7 +7,6 @@ import com.codecool.shop.model.Supplier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.security.cert.CollectionCertStoreParameters;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,14 +31,13 @@ class ProductDaoTest {
         this.dummyProduct = new Product("Test", 42, "USD", "TestDesc ", dummyCategory, dummySupplier);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void assertAddNotNull() {
         productMemory.add(dummyProduct);
         assertNotNull(productMemory.find(1));
     }
 
-
-    @org.junit.jupiter.api.Test
+    @Test
     void assertRemoveSetsNull() {
         productMemory.remove(0);
         assertNull(productMemory.find(0));
@@ -73,14 +71,31 @@ class ProductDaoTest {
     }
 
     @Test
-    void getBy() {
+    void assertGetBySupplierReturnsElements() {
+        Supplier supplier = supplierMemory.find(2);
+        assertTrue(productMemory.getBy(supplier).collect(Collectors.toList()).size() > 0);
     }
 
     @Test
-    void getBy1() {
+    void assertGetByCategoryReturnsElements() {
+        ProductCategory category = categoryMemory.find(2);
+        assertTrue(productMemory.getBy(category).collect(Collectors.toList()).size() > 0);
     }
 
     @Test
-    void getBy2() {
+    void assertCrossedGetByReturnsElementsWhenGetsNulls() {
+        assertTrue(productMemory.getBy(null, null).collect(Collectors.toList()).size() > 0);
     }
+    @Test
+    void assertCrossedGetByReturnsElementsWhenCategoryIsNull() {
+        Supplier supplier = supplierMemory.find(2);
+        assertTrue(productMemory.getBy(null, supplier).collect(Collectors.toList()).size() >= 1);
+    }
+
+    @Test
+    void assertCrossedGetByReturnsElementsWhenSupplierIsNull() {
+        ProductCategory category = categoryMemory.find(2);
+        assertTrue(productMemory.getBy(category, null).collect(Collectors.toList()).size() >= 1);
+    }
+
 }
