@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS suppliers;
 DROP TABLE IF EXISTS productcategories;
+DROP TABLE IF EXISTS users;
 
 
 
@@ -20,6 +21,13 @@ CREATE TABLE suppliers
 id SERIAL PRIMARY KEY NOT NULL,
 name  varchar(50) NOT NULL,
 description varchar(255) NOT NULL
+);
+
+CREATE TABLE users
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  email  varchar(255) UNIQUE NOT NULL,
+  password varchar(255) NOT NULL
 );
 
 CREATE TABLE products
