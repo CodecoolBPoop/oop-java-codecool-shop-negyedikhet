@@ -50,11 +50,12 @@
 <!-- Modal -->
 <div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content"  id="regContent">
             <div class="modal-header">
                 <h5 class="modal-title" id="registerModalLabel">Registration</h5>
             </div>
             <div class="modal-body">
+                <div id="regResponse"></div>
                 <form>
                     <div class="form-group">
                         <label for="regEmail">Email</label>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="form-group">
                         <label for="regPassword">Password</label>
-                        <input type="text" class="form-control" id="regPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="regPassword" placeholder="Password">
                     </div>
                 </form>
 
@@ -74,9 +75,10 @@
         </div>
     </div>
 </div>
+
 <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content"  id="loginContent">
             <div class="modal-header">
                 <h5 class="modal-title" id="loginModalLabel">Sign in</h5>
 
@@ -89,7 +91,7 @@
                     </div>
                     <div class="form-group">
                         <label for="loginPassword">Password</label>
-                        <input type="text" class="form-control" id="loginPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Password">
                     </div>
                 </form>
 
@@ -132,6 +134,7 @@
         </div>
     </div>
 </div>
+
 <div>
     <button type="button" class="cart" data-toggle="modal" data-target="#exampleModal" id="Cart"><img
             src="/static/img/cart.png">

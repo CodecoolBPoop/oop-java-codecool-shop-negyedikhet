@@ -3,6 +3,7 @@ package com.codecool.shop.controller;
 import com.codecool.shop.dao.implementation.UserDaoJdbc;
 import com.codecool.shop.model.User;
 import org.mindrot.jbcrypt.BCrypt;
+import org.postgresql.util.PSQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,10 @@ public class SignupController extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
-        userDataStore.add(new User(email, hashed));
+        try {
+            userDataStore.add(new User(email, hashed));
+        } catch (RuntimeException e){
+            resp.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
+        }
     }
 }
