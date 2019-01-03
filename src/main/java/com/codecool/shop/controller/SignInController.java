@@ -19,8 +19,7 @@ public class SignInController extends HttpServlet {
         UserDaoJdbc userDataStore = UserDaoJdbc.getInstance();
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
-        if (BCrypt.checkpw(userDataStore.find(email).getPassword(), hashed)) {
+        if (BCrypt.checkpw(password, userDataStore.find(email).getPassword())) {
             System.out.println("It matches");
             HttpSession mySession = req.getSession();
             mySession.setAttribute("username", email);
