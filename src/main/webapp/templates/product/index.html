@@ -35,6 +35,69 @@
 </head>
 
 <body class="indexBody">
+<nav class="navbar navbar-light">
+    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#loginModal">
+        Login
+    </button>
+    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#registerModal">
+        Register
+    </button>
+</nav>
+
+<!-- Modal -->
+<div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Registration</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <input type="text" class="form-control" id="regPassword" placeholder="Password">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="regButton">Register</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Sign in</h5>
+
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="text" class="form-control" id="loginPassword" placeholder="Password">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="loginButton">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-lg modal-dialog-centered">
@@ -45,7 +108,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table" id = "shoppingCart">
+                <table class="table" id="shoppingCart">
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -67,7 +130,8 @@
     </div>
 </div>
 <div>
-    <button type="button" class="cart" data-toggle="modal" data-target="#exampleModal" id="Cart"><img src="/static/img/cart.png">
+    <button type="button" class="cart" data-toggle="modal" data-target="#exampleModal" id="Cart"><img
+            src="/static/img/cart.png">
     </button>
 </div>
 <div class="container titleContainer">
