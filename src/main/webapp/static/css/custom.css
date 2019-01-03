@@ -232,9 +232,13 @@ img {
     padding: 8px;
 }
 
-#shoppingCart tr:nth-child(even){background-color: #f2f2f2;}
+#shoppingCart tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-#shoppingCart tr:hover {background-color: #ddd;}
+#shoppingCart tr:hover {
+    background-color: #ddd;
+}
 
 #shoppingCart th {
     padding-top: 12px;
@@ -244,24 +248,40 @@ img {
     color: white;
 }
 
-.modal-header{
+.modal-header {
     padding-bottom: 0;
 }
 
-.alert-success{
-    position: fixed; top: 50%; right: 0;
+.alert-success {
+    position: fixed;
+    top: 50%;
+    right: 0;
     width: 20%;
 }
 
-.bells{
+.bells {
     width: auto;
     height: 10rem;
-    display: inline;}
-
-#title{
     display: inline;
 }
 
-.titleContainer{
+#title {
+    display: inline;
+}
+
+.titleContainer {
     left: 5%;
 }
+
+.navbar-light {
+    background-color: #fffefe5c;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-outline-info {
+    float: right;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+
