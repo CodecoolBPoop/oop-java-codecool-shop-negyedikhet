@@ -21,16 +21,13 @@ public class SignupController extends HttpServlet {
         String email = req.getParameter("email");
         String candidatePass = req.getParameter("password");
         String hashed = BCrypt.hashpw(candidatePass, BCrypt.gensalt());
-        userDataStore.add(new User(email, hashed));
-        String subjectString = "Registration Successful";
-        String messageString = "Dear Customer,"
-                + "\n\n You successfully registered to Jinglingwebshop!"
-                + "\n\n Sincerely yours,\n Jingling";
-        emailController.emailHandling(email, subjectString, messageString);
-        String password = req.getParameter("password");
-        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
         try {
             userDataStore.add(new User(email, hashed));
+            String subjectString = "Registration Successful";
+            String messageString = "Dear Customer,"
+                    + "\n\n You successfully registered to Jinglingwebshop!"
+                    + "\n\n Sincerely yours,\n Jingling";
+            emailController.emailHandling(email, subjectString, messageString);
         } catch (RuntimeException e){
             resp.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
         }
