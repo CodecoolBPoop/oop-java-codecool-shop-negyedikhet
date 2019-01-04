@@ -39,12 +39,22 @@
 
 <body class="indexBody">
 <nav class="ribbon">
-    <button type="button" class="btn btn-outline-info" id="logButton" data-toggle="modal" data-target="#loginModal">
-        Login
-    </button>
-    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#registerModal">
-        Register
-    </button>
+        <div th:switch="${session.username}">
+        <div th:case="null">
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#registerModal">
+                Register
+            </button>
+            <button type="button" class="btn btn-outline-info logButton" data-toggle="modal" data-target="#loginModal">
+                Login
+            </button>
+
+        </div>
+        <div th:case="*" >You're logged in as <span th:text="${session.username}"></span>
+            <button type="button" class="btn btn-outline-info logButton">
+                Logout
+            </button>
+        </div>
+    </div>
 </nav>
 
 <div>
