@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign in</title>
-</head>
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <body>
+    <div th:fragment="register">
+        <div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" id="regContent">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="registerModalLabel">Registration</h3>
+                    </div>
+                    <div class="modal-body" id="regModalBody">
+                        <form>
+                            <div class="form-group">
+                                <label for="regEmail">Email</label>
+                                <input type="email" class="form-control" id="regEmail" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="regPassword">Password</label>
+                                <input type="password" class="form-control" id="regPassword" placeholder="Password">
+                            </div>
+                        </form>
+                        <span id="regResponse"></span>
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" id="regButton">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

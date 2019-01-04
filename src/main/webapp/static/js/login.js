@@ -14,7 +14,7 @@ function login() {
                 "email": email,
                 "password": password,
             }).done(function () {
-            loginResponse.innerText = "Succesfully logged in";
+            loginResponse.innerText = "Succesfully logged in!";
             setTimeout(function () {
                 $("#loginModal").modal('hide');
             }, 1000);
