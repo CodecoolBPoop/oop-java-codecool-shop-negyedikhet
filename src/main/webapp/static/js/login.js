@@ -17,6 +17,7 @@ function login() {
             loginResponse.innerText = "Succesfully logged in!";
             setTimeout(function () {
                 $("#loginModal").modal('hide');
+                window.location.assign("/");
             }, 1000);
         }).fail(function () {
             loginResponse.innerText = "Email or username is invalid!"
