@@ -15,5 +15,6 @@ public class SignOutController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession mySession = req.getSession();
         mySession.setAttribute("username",null);
+        resp.sendRedirect("/");
     }
 }
