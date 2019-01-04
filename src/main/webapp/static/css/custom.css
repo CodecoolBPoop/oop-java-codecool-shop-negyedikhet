@@ -301,7 +301,7 @@ img {
 
 .ribbon{
     width:130px;
-    height:130px;
+    height:140px;
     background-color:white;
     position:absolute;
     right:30px;
@@ -328,5 +328,6 @@ img {
     display: block;
     width: 120px;
     word-wrap: break-word;
-    padding: 5px;
+    padding: 8px;
+    font-size: 14px;
 }
