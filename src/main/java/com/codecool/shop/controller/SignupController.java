@@ -17,9 +17,15 @@ public class SignupController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDaoJdbc userDataStore = UserDaoJdbc.getInstance();
+        EmailController emailController = EmailController.getInstance();
         String email = req.getParameter("email");
-        String password = req.getParameter("password");
-        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+        String candidatePass = req.getParameter("password");
+        String hashed = BCrypt.hashpw(candidatePass, BCrypt.gensalt());
         userDataStore.add(new User(email, hashed));
+        String subjectString = "Registration Successful";
+        String messageString = "Dear Customer,"
+                + "\n\n You successfully registered to Jinglingwebshop!"
+                + "\n\n Sincerely yours,\n Jingling";
+        emailController.emailHandling(email, subjectString, messageString);
     }
 }
