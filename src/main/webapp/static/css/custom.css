@@ -285,3 +285,9 @@ img {
     margin-right: 5px;
 }
 
+#regResponse, #loginResponse {
+    color:darkred;
+    font-weight: bold;
+    text-align: center;
+}
+

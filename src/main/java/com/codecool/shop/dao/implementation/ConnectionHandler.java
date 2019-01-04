@@ -1,5 +1,7 @@
 package com.codecool.shop.dao.implementation;
 
+import org.postgresql.util.PSQLException;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,7 +35,7 @@ public abstract class ConnectionHandler {
             statement.execute(query);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 

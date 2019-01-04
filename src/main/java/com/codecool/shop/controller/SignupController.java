@@ -27,5 +27,12 @@ public class SignupController extends HttpServlet {
                 + "\n\n You successfully registered to Jinglingwebshop!"
                 + "\n\n Sincerely yours,\n Jingling";
         emailController.emailHandling(email, subjectString, messageString);
+        String password = req.getParameter("password");
+        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+        try {
+            userDataStore.add(new User(email, hashed));
+        } catch (RuntimeException e){
+            resp.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
+        }
     }
 }

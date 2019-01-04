@@ -25,6 +25,7 @@ public class SignInController extends HttpServlet {
             mySession.setAttribute("username", email);
         }  else {
             System.out.println("It does not match");
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 }
