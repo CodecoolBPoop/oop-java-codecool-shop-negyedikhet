@@ -300,8 +300,8 @@ img {
 }
 
 .ribbon{
-    width:100px;
-    height:100px;
+    width:130px;
+    height:130px;
     background-color:white;
     position:absolute;
     right:30px;
@@ -314,12 +314,19 @@ img {
      z-index: 2;
      left: 0;
      bottom: -50px;
-     border-left: 50px solid white;
-     border-right: 50px solid white;
+     border-left: 65px solid white;
+     border-right: 65px solid white;
      border-bottom: 50px solid transparent;
  }
 
 @keyframes drop{
     0%		{ top:-250px; }
     100%	{ top:0; }
+}
+
+#loggedIn{
+    display: block;
+    width: 120px;
+    word-wrap: break-word;
+    padding: 5px;
 }
