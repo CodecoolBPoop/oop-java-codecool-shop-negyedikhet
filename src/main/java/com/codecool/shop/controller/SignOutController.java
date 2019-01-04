@@ -12,9 +12,8 @@ import java.io.IOException;
 
 public class SignOutController extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession mySession = req.getSession();
         mySession.setAttribute("username",null);
-        resp.sendRedirect("/");
     }
 }
