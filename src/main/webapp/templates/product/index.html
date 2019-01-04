@@ -50,7 +50,7 @@
 
         </div>
         <div th:case="*" >You're logged in as <span th:text="${session.username}"></span>
-            <button type="button" class="btn btn-outline-info logButton">
+            <button onclick="window.location.href='/signout'" type="button" class="btn btn-outline-info logButton">
                 Logout
             </button>
         </div>
