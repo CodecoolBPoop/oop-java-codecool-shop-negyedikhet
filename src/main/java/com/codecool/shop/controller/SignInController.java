@@ -22,7 +22,8 @@ public class SignInController extends HttpServlet {
         if (BCrypt.checkpw(password, userDataStore.find(email).getPassword())) {
             System.out.println("It matches");
             HttpSession mySession = req.getSession();
-            mySession.setAttribute("username", email);
+            String[] array = email.split("@");
+            mySession.setAttribute("username", array[0]);
         }  else {
             System.out.println("It does not match");
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
