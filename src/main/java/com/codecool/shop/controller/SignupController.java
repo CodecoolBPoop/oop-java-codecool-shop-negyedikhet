@@ -3,7 +3,6 @@ package com.codecool.shop.controller;
 import com.codecool.shop.dao.implementation.UserDaoJdbc;
 import com.codecool.shop.model.User;
 import org.mindrot.jbcrypt.BCrypt;
-import org.postgresql.util.PSQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,11 +17,17 @@ public class SignupController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDaoJdbc userDataStore = UserDaoJdbc.getInstance();
+        EmailController emailController = EmailController.getInstance();
         String email = req.getParameter("email");
-        String password = req.getParameter("password");
-        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+        String candidatePass = req.getParameter("password");
+        String hashed = BCrypt.hashpw(candidatePass, BCrypt.gensalt());
         try {
             userDataStore.add(new User(email, hashed));
+            String subjectString = "Registration Successful";
+            String messageString = "Dear Customer,"
+                    + "\n\n You successfully registered to Jinglingwebshop!"
+                    + "\n\n Sincerely yours,\n Jingling";
+            emailController.emailHandling(email, subjectString, messageString);
         } catch (RuntimeException e){
             resp.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
         }
