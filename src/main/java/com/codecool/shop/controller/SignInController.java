@@ -23,6 +23,7 @@ public class SignInController extends HttpServlet {
             System.out.println("It matches");
             HttpSession mySession = req.getSession();
             mySession.setAttribute("username", email);
+            resp.sendRedirect("/");
         }  else {
             System.out.println("It does not match");
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
