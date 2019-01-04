@@ -280,9 +280,17 @@ img {
 }
 
 .btn-outline-info {
+    position: relative;
+    width: 100%;
     float: right;
-    margin-top: 8px;
-    margin-right: 5px;
+    background: transparent;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+#logButton{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.27);
 }
 
 #regResponse, #loginResponse {
@@ -291,3 +299,27 @@ img {
     text-align: center;
 }
 
+.ribbon{
+    width:100px;
+    height:100px;
+    background-color:white;
+    position:absolute;
+    right:30px;
+    top:-250px;
+    animation:drop forwards .8s 1s cubic-bezier(0.165, 0.84, 0.44, 1);}
+
+.ribbon:before{
+     content: '';
+     position: absolute;
+     z-index: 2;
+     left: 0;
+     bottom: -50px;
+     border-left: 50px solid white;
+     border-right: 50px solid white;
+     border-bottom: 50px solid transparent;
+ }
+
+@keyframes drop{
+    0%		{ top:-250px; }
+    100%	{ top:0; }
+}
